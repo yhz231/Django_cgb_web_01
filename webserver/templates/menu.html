@@ -1,0 +1,64 @@
+{% load staticfiles %}
+<meta charset="utf-8" />
+<!-- 通用样式 -->
+<link rel="stylesheet" type="text/css" href="{% static "css/public.css" %}">
+<!-- 动态菜单CSS -->
+<link rel="stylesheet" type="text/css" href="{% static "css/menu.css" %}">
+<!-- jquery引入 -->
+<script src="{% static "js/jquery.min.js" %}"></script>
+<!-- 动态菜单JS -->
+<script type="text/javascript" src="{% static "js/menu.js" %}"></script>
+<div class="middle">
+	<div class="leftMenu">
+		<div class="topMenu">
+			<img class="banshi" src="{% static "img/banshidating.png" %}"/>
+			<p class="menuTitle">网络组微服务</p>
+		</div>
+		<div class="menu_list">
+			<ul>
+				<li class="">
+					<p class="fuMenu"><a href="/index">首页</a></p>
+				</li>
+				<li class="">
+					<p class="fuMenu">资产管理</p>
+					<img class="xiala" src="{% static "img/xiala.png" %}" />
+					<div class="div1">
+						<p class="zcd" id="zcd9"><a href="/cmdb/dataadd/">互联网域名信息查询</a></p>
+                        <p class="zcd" id="zcd10"><a href="/cmdb/serverlist/">资产列表</a></p>
+                        <p class="zcd" id="zcd11"><a href="/cmdb/serveradd/">添加主机</a></p>
+   					    <p class="zcd" id="zcd12">地址转换关系查询</p>
+						<p class="zcd" id="zcd13">服务器物理端口查询</p>
+					    <p class="zcd" id="zcd14">网络路径查询</p>
+					    <p class="zcd" id="zcd15"><a href="/cmdb/baseline/">基线配置</a></p>
+					</div>
+				</li>
+				<li class="">
+					<p class="fuMenu">主机管理</p>
+                    <img class="xiala" src="{% static "img/xiala.png" %}" />
+                    <div class="div1">
+                        <p class="zcd" id="zcd10"><a href="/cmdb/hostadmin/">批量管理</a></p>
+                    </div>
+				</li>
+				<li class="">
+					<p class="fuMenu">监控系统</p>
+					<img class="xiala" src="{% static "img/xiala.png" %}" />
+					<div class="div1">
+                        <p class="zcd" id="zcd19"><a href="{% url 'monitor' %}">健康状态监控</a></p>
+					</div>
+				</li>
+				<li class="">
+					<p class="fuMenu">权限管理</p>
+					<img class="xiala" src="{% static "img/xiala.png" %}" />
+					<div class="div1">
+                        <p class="zcd" id="zcd19"><a href="/user/list/">用户管理</a></p>
+{#						<p class="zcd" id="zcd20"><a href="/user/role/">角色管理</a></p>#}
+{#						<p class="zcd" id="zcd19"><a href="/user/power/">权限管理</a></p>#}
+					</div>
+				</li>
+				<li class="">
+					<p class="fuMenu"><a href="/logout/">退出</a></p>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
