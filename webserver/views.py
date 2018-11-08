@@ -6,6 +6,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
+from django_prbac.models import Role
+
 from webserver.forms import UserForm,RegisterForm,AlterForm,hostadimnForm,monitorForm,autoArrMinionForm
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
@@ -54,7 +56,15 @@ def login(req):
             user = auth.authenticate(username = username,password = password)
             if user is not None and user.is_active:
                 auth.login(req,user)
-                return render(req, 'index.html')
+                # for rbac
+                user_rbac = Role.objects.get(name=username)
+                zonghang = Role.objects.get(name='zonghang_privilege')
+                if user_rbac.has_privilege(zonghang):
+                    zonghang_member = True
+                else:
+                    zonghang_member = False
+                req.session['zonghang_member'] = zonghang_member
+                return render(req, 'index.html',{'zonghang_member':zonghang_member})
             else:
                 return render(req, 'login.html', {'uf': uf,'nowtime': nowtime, 'password_is_wrong': True})
         else:
@@ -62,14 +72,17 @@ def login(req):
 
 @login_required
 def index(req):
-    system = platform.system()
-    if system == 'Windows':
-        version = platform.version()
-        OsVersion = system + '. '+ version
-    else:
-        node = platform.node()
-        OsVersion = node + '@' + system
-    return render(req, 'index.html', {'OsVersion': OsVersion})
+    #system = platform.system()
+    #if system == 'Windows':
+    #    version = platform.version()
+    #    OsVersion = system + '. '+ version
+    #else:
+    #    node = platform.node()
+    #    OsVersion = node + '@' + system
+    #return render(req, 'index.html', {'OsVersion': OsVersion})
+    if req.session.get('zonghang_member', None):
+        return render(req, 'index.html', {'zonghang_member': True})
+    return render(req, 'index.html', {'zonghang_member': False})
 
 @login_required
 def logout(req):
@@ -77,7 +90,7 @@ def logout(req):
     注销
     '''
     auth.logout(req)
-    return HttpResponseRedirect('/webserver/login/')
+    return HttpResponseRedirect('/login/')
 
 def getServerIp(request):
     '''
@@ -727,5 +740,6 @@ def serverAdd(request):
         "result": result
     }
     return  render(request, "serveradd.html", re)
+
 
 

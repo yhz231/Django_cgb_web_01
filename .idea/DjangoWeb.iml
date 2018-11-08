@@ -11,8 +11,8 @@
     </facet>
   </component>
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
-    <orderEntry type="jdk" jdkName="Python 3.6.0 (C:\Users\Kurol\AppData\Local\Programs\Python\Python36-32\python.exe)" jdkType="Python SDK" />
+    <content url="file:$MODULE_DIR$/../..//$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">
