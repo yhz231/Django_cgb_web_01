@@ -1,1 +1,32 @@
-# Django_cgb_web_01
+# Django_web_01
+
+Require Package
+Package        Version 
+-------------- --------
+ciscoconfparse 1.3.20  
+colorama       0.4.0   
+Django         1.11.15 
+django-prbac   0.0.7   
+django-radius  1.3.3   
+django-redis   4.9.0   
+dnspython      1.15.0  
+dnspython3     1.15.0  
+future         0.16.0  
+ipaddr         2.2.0   
+ipaddress      1.0.22  
+jsonfield      2.0.2   
+mysqlclient    1.3.13  
+netaddr        0.7.19  
+passlib        1.7.1   
+pip            18.1    
+pyrad          2.1     
+pytz           2018.5  
+redis          2.10.6  
+setuptools     40.4.3  
+simplejson     3.16.0  
+six            1.11.0  
+uWSGI          2.0.17.1
+wheel          0.32.1  
+xlrd           1.1.0   
+xlwt           1.3.0   
+

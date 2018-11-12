@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<link href="{%static "css/adstyle.css" %}" rel="stylesheet" type="text/css" />
+{% include "header.html" %}
+<style>
+    body{
+        background-color: #F2F2F2;
+        margin-left: 220px;
+        margin-top: 60px;
+        padding: 20px;
+    }
+</style>
+<script type="text/javascript">
+
+    function toTop(){
+        window.scroll(0,0);
+       }
+    function cisco(){
+          window.location.href="/cmdb/baseline/ciscotemplate/";
+    }
+    function huawei(){
+          window.location.href="/cmdb/baseline/hwtemplate/";
+    }
+    function h3c(){
+          window.location.href="/cmdb/baseline/h3ctemplate/";
+    }
+    function maipu(){
+          window.location.href="/cmdb/baseline/mptemplate/";
+    }
+  </script>
+<body>
+{% include 'baseline/baseline-menu.html' %}
+<div class="content" align="left">
+    <h5><span id="11" style="color: #008000;"><strong>基线配置模版下载</strong></span></h5>
+        <ul style="list-style-type: circle;">
+          <li>思科基线配置模板--A(2018.07) &nbsp;<input type="button" onclick="cisco()" value="下载"></li>
+          <li style="list-style-type: none;">&nbsp;</li>
+          <li>华为基线配置模板--A(2018.07) &nbsp;<input type="button" onclick="huawei()" value="下载"></li>
+          <li style="list-style-type: none;">&nbsp;</li>
+          <li>华三基线配置模板--A(2018.07) &nbsp;<input type="button" onclick="h3c()" value="下载"></li>
+          <li style="list-style-type: none;">&nbsp;</li>
+          <li>迈普基线配置模板--A(2018.07) &nbsp;<input type="button" onclick="maipu()" value="下载"></li>
+        </ul>
+
+    <h5><span id="11" style="color: #008000;"><strong>资料链接</strong></span></h5>
+        <ul style="list-style-type: circle;">
+          <li><a href="/cmdb/baseline/dot1x/">dot1x简介</a></li>
+          <li style="list-style-type: none;">&nbsp;</li>
+          <li><a href="/cmdb/baseline/hw-nac/">华为NAC介绍</a></li>
+          <li style="list-style-type: none;">&nbsp;</li>
+        </ul>
+
+
+</div>
+
+</body>
+</html>

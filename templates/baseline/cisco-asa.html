@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<link href="{%static "css/adstyle.css" %}" rel="stylesheet" type="text/css" />
+{% include "header.html" %}
+<style>
+    body{
+        background-color: #F2F2F2;
+        margin-left: 220px;
+        margin-top: 60px;
+        padding: 20px;
+    }
+</style>
+<body>
+{% include 'baseline/baseline-menu.html' %}
+<div class="content" align="left">
+    <h1 class="head_h1">思科防火墙ASA基线配置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     {% include 'downloadico.html' %}
+	</h1>
+    <p><span style="color: #800080;"><strong>内容简述：</strong></span></p>
+    <p>介绍了思科防火墙ASA的配置模版的内容以及相关的配置说明</p>
+    <blockquote><p>
+        思科IOS软件系统存在众多的软件版本，不同软件版本间可能存在命令上的差异，需各分行根据实际修改对应命令
+    </p></blockquote>
+    <div id="toc_container" class="toc_light_blue no_bullets";">
+        <p class="toc_title">目录结构</p>
+        <ul class="toc_list">
+            <li><a href="#11">1.1 设备命名配置</a></li>
+            <li><a href="#12">1.2 优化默认服务</a></li>
+            <li><a href="#13">1.3 AAA配置</a></li>
+            <li><a href="#14">1.4 SSH登陆配置</a></li>
+            <li><a href="#15">1.5 SNMP配置</a></li>
+            <li><a href="#16">1.6 LOG日志配置</a></li>
+            <li><a href="#17">1.7 NTP配置</a></li>
+            <li><a href="#18">1.8 端口配置</a></li>
+        </ul>
+    </div>
+    <h5><span id="11"><span style="color: #008000;"><strong>1.1 设备命名配置</strong></span></span></h5>
+        <p>设备命名需采用以下统一命名规则：</p>
+        <h4 class="well">AA-BB-CC-DD-EE<br></h4>
+        <blockquote><ul style="list-style-type:disc;">
+            <li>AA: 分行标识</li>
+            <li>BB: 功能区域代码</li>
+            <li>CC: 设备类型代码</li>
+            <li>DD: 机柜位置信息(可选)</li>
+            <li>EE: 设备编码</li>
+        </ul></blockquote>
+        <p>设备命名配置：</p>
+<pre>
+hostname XXFH-FW-ASA-01
+prompt hostname priority state 
+</pre>
+    <h5><span id="12"><span style="color: #008000;"><strong>1.2 优化默认服务</strong></span></span></h5>
+        <p>思科防火墙默认启用的部分安全服务，对于内网环境存在隐患，可以考虑关闭</p>
+        <p">表1-1    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;建议关闭服务</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+        <tr class="row-1 odd">
+            <td class="column-1">配置命令</td>
+            <td class="column-2">作用</td>
+        </tr>
+        <tr class="row-2 even">
+            <td class="column-1">no asdm history enable</td>
+            <td class="column-2">asdm记录相关功能，不使用ASDM功能，建议关闭</td>
+        </tr>
+        <tr class="row-3 odd">
+            <td class="column-1">no arp permit-nonconnected</td>
+            <td class="column-2">非直连子网ARP，默认关闭，建议关闭</td>
+        </tr>
+        <tr class="row-4 even">
+            <td class="column-1">no threat-detection statistics tcp-intercept</td>
+            <td class="column-2">TCP拦截威胁检测，默认关闭</td>
+        </tr>
+        <tr class="row-5 odd">
+            <td class="column-1">no call-home reporting anonymous</td>
+            <td class="column-2">匿名报告功能，用于验证web server，建议关闭</td>
+        </tr>
+        <tr class="row-6 even">
+            <td class="column-1">no https server enable</td>
+            <td class="column-2">不建议使用https进行管理，建议关闭</td>
+        </tr>
+        </tbody>
+        </table>
+        <p">表1-2    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;建议开启服务</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">service password-encryption</td>
+                <td class="column-2">开启密码加密服务</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>优化默认服务配置命令如下：</p>
+<pre>
+no asdm history enable
+no arp permit-nonconnected
+no threat-detection statistics tcp-intercept
+no call-home reporting anonymous
+no https server enable
+！
+service password-encryption
+</pre>
+    <h5><span id="13"><span style="color: #008000;"><strong>1.3 AAA配置</strong></span></span></h5>
+        <p>AAA ，认证(Authentication)：验证用户的身份与可使用的网络服务；授权(Authorization)：依据认证结果开放网络服务给用户；计帐(Accounting)：记录用户对各种网络服务的用量，并提供给计费系统。整个系统在网络管理与安全问题中十分有效。常用的AAA协议是Radius（RFC 2865，RFC 2866），TACACS（RFC1492），思科设备AAA认证主要用到的是TACACA协议。</p>
+        <blockquote><p>
+            分行核心设备指向总行3A服务器，其他设备指向分行的3A服务器。
+        </p></blockquote>
+        <p>AAA服务部分配置说明：</p>
+        <p>表1-3  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AAA服务配置</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">aaa group server tacacs+ 3a</td>
+                <td class="column-2">建立tacacs服务器组，并命名为3a</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1">aaa-server 3a (intranet) host 21.14.0.122</td>
+                <td class="column-2">总行主认证服务器地址21.14.0.122,备服务器为21.14.0.123</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1"> key {{ FH3A_KEY }} </td>
+                <td class="column-2">指定认证的密钥，总行3A认证密钥为 {{ FH3A_KEY }}</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>AAA服务配置命令如下：</p>
+<pre>aaa new-model 
+aaa-server 3a protocol tacacs+
+aaa-server 3a (intranet) host <i><主认证服务器></i>
+ key <i><认证密钥></i>
+aaa-server 3a (intranet) host  <i><备认证服务器></i>
+ key <i><认证密钥></i>
+！
+/*配置AAA认证
+aaa authentication enable console 3a LOCAL
+aaa authentication https console 3a LOCAL
+aaa authentication ssh console 3a LOCAL
+aaa authentication serial console LOCAL
+/*配置AAA授权
+aaa authorization command 3a LOCAL
+/*配置AAA审计
+aaa accounting command 3a
+aaa accounting ssh console 3a
+</pre>
+    <h5><span id="14"><span style="color: #008000;"><strong>1.4 SSH登陆配置</strong></span></span></h5>
+        <p>SSH是一种协议标准，其目的是实现安全远程登录以及其它安全网络服务。目前要求所有命令行登陆的设备均需使用SSH协议。</p>
+        <p>SSH部分配置说明：</p>
+        <p>表1-4  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SSH配置</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">username <i><本地用户></i> password <i><本地密码></i> encrypted privilege 15 </td>
+                <td class="column-2">指定本地用户名密码，分行用户名规范“分行简称”，如北京分行用户名为 BJFH</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1">enable password <i>&lt;enable密码&gt;</i> encrypted</td>
+                <td class="column-2">使用加密方式指定enable密码</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1">ssh version 2</td>
+                <td class="column-2">指定SSH版本为V2</td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1">ssh timeout 5</td>
+                <td class="column-2">指定SSH登陆空闲超时时间5分钟</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1">domain name cgbchina.com.cn</td>
+                <td class="column-2">指定设备域名为cgbchia.com.cn</td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1">crypto key generate rsa general-keys modulus 2048</td>
+                <td class="column-2">为加密会话生成密钥，要求RSA长度为2048</td>
+            </tr>
+            <tr class="row-6 even">
+                <td class="column-1">ssh 21.4.0.88 255.255.255.255 intranet </td>
+                <td class="column-2">总行跳板机服务器IP</td>
+            </tr>
+            <tr class="row-7 odd">
+                <td class="column-1"> ssh 21.15.255.1 255.255.255.255 intranet </td>
+                <td class="column-2">总行核心交换机IP,作为跳板机服务器的备份</td>
+            </tr>
+            <tr class="row-8 even">
+                <td class="column-1"> ssh 21.15.255.2 255.255.255.255 intranet</td>
+                <td class="column-2">总行核心交换机IP,作为跳板机服务器的备份</td>
+            </tr>
+            <tr class="row-9 odd">
+                <td class="column-1"> ssh 10.2.95.211 255.255.255.255 intranet</td>
+                <td class="column-2">总行网管地址</td>
+            </tr>
+            <tr class="row-10 even">
+                <td class="column-1"> ssh 21.14.0.0 255.255.255.0 intranet</td>
+                <td class="column-2">总行网管地址</td>
+            </tr>
+            <tr class="row-11 odd">
+                <td class="column-1"> ssh  <i><分行源地址></i> intranet </td>
+                <td class="column-2">分行地址请管理员自行添加，但源不允许为any</td>
+            </tr>
+        </tbody>
+        </table>
+        <blockquote><p>
+            部分型号较老的设备可能不支持2048位长度的密钥，则按能支持的最大长度密钥进行配置。
+        </p></blockquote>
+        <p>SSH登陆配置命令如下：</p>
+<pre>
+username <i><本地用户></i> password <i><本地密码></i> encrypted privilege 15
+enable password <i>&lt;enable密码&gt;</i> encrypted
+！
+ssh version 2
+ssh timeout 5
+domain-name cgbchina.com.cn
+crypto key generate rsa general-keys modulus 2048
+!
+ssh 21.4.0.88 255.255.255.255 intranet
+ssh 21.15.255.1 255.255.255.255 intranet
+ssh 21.15.255.2 255.255.255.255 intranet
+ssh 10.2.95.211 255.255.255.255 intranet
+ssh 21.14.0.0 255.255.255.0 intranet
+ssh  <i><分行源地址></i> intranet   
+</pre>
+    <h5><span id="15"><span style="color: #008000;"><strong>1.5 SNMP配置</strong></span></span></h5>
+        <p>SNMP(Simple Network Management Protocol)是一种简单网络管理协议，它属于TCP/IP五层协议中的应用层协议，用于网络管理的协议。SNMP主要用于网络设备的管理。由于SNMP协议简单可靠 ，受到了众多厂商的欢迎，成为了目前最为广泛的网管协议。</p>
+        <p>SNMP的工作方式：管理员需要向设备获取数据，所以SNMP提供了【RO】操作；管理员需要向设备执行设置操作，所以SNMP提供了【RW】操作；设备需要在重要状况改变的时候，向管理员通报事件的发生，所以SNMP提供了【Trap】操作。</p>
+        <p>SNNP部分配置说明：</p>
+        <p>表1-5  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SNMP配置</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">snmp-server enable</td>
+                <td class="column-2">开启SNMP功能</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1"> snmp-server host intranet <i><总行snmp服务器地址></i> poll community zxcv1234     </td>
+                <td class="column-2">指定允许访问的总行网管地址，分组布署，不同分行分配的探针地址不一样</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1"> snmp-server host intranet 10.2.95.211  poll community zxcv1234</td>
+                <td class="column-2">指定允许访问的总行网管地址</td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1"> snmp-server community zxcv1234   </td>
+                <td class="column-2">指定 snmp community 团体名</td>
+            </tr>
+            <tr class="row-6 even">
+                <td class="column-1"> no snmp-server location</td>
+                <td class="column-2">关闭snmp-server物理位置描述信息</td>
+            </tr>
+            <tr class="row-7 odd">
+                <td class="column-1"> no snmp-server contact </td>
+                <td class="column-2">关闭snmp-server联系人描述信息</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>总行SNNP探针地址说明：</p>
+        <p>表1-6  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SNMP配置</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">服务器名称</td>
+                <td class="column-2">服务器IP地址</td>
+                <td class="column-3">监控机构范围</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">A-WGXT-NMISM10</td>
+                <td class="column-2">21.14.0.30</td>
+                <td class="column-3">深圳分行、佛山分行、惠州分行、清远分行、宁波分行、苏州分行、南宁分行、长春分行、太原分行</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1">A-WGXT-NMISM11</td>
+                <td class="column-2">21.14.0.31</td>
+                <td class="column-3">梅州分行、茂名分行、昆明分行、杭州分行、澳门分行、福州分行</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1">A-WGXT-NMISM12</td>
+                <td class="column-2">21.14.0.32</td>
+                <td class="column-3">东莞分行、南京分行、中山分行、武汉分行、天津分行、乌鲁木齐分行</td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1">A-WGXT-NMISM13</td>
+                <td class="column-2">21.14.0.33</td>
+                <td class="column-3">江门分行、汕头分行、肇庆分行、湛江分行、珠海分行、郑州分行、合肥分行、重庆分行、石家庄分行、西安分行</td>
+            </tr>
+            <tr class="row-6 even">
+                <td class="column-1">A-WGXT-NMISM14</td>
+                <td class="column-2">21.14.0.34</td>
+                <td class="column-3">广州分行、韶关分行、阳江分行、河源分行、大连分行、上海分行、济南分行、南昌分行</td>
+            </tr>
+            <tr class="row-7 odd">
+                <td class="column-1">A-WGXT-NMISM15</td>
+                <td class="column-2">21.14.0.35</td>
+                <td class="column-3">北京分行、沈阳分行、长沙分行、哈尔滨分行、成都分行、上海分行</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>SNMP配置命令如下：</p>
+<pre>
+snmp-server enable
+snmp-server host intranet <i><总行SNMP服务器地址></i> poll community zxcv1234      
+snmp-server host intranet 10.2.95.211  poll community zxcv1234
+snmp-server community zxcv1234
+no snmp-server location
+no snmp-server contact
+  
+</pre>
+    <h5><span id="16"><span style="color: #008000;"><strong>1.6 LOG日志配置</strong></span></span></h5>
+        <p>我行日志记录标准是syslog（RFC5424）。 syslog标准使专用的标准化子系统能够生成，过滤，记录和分析日志消息。</p>
+        <p>LOG部分配置说明：</p>
+        <p>表1-7  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LOG配置</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">logging enable</td>
+                <td class="column-2">开启log日志功能</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1"> logging timestamp</td>
+                <td class="column-2">指定log信息加上时间戳</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1"> logging buffer-size <i><日志buffer大小></i></td>
+                <td class="column-2">指定日志信息本地buffer大小，推荐使用8192以上</td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1"> logging buffered alerts</td>
+                <td class="column-2">指定本地log缓存级别为 alerts</td>
+            </tr>
+            <tr class="row-6 even">
+                <td class="column-1"> logging trap warnings</td>
+                <td class="column-2">指定发送trap信息级别为 warnings</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1"> logging host intranet <i><日志服务器IP></i></td>
+                <td class="column-2">一级分行核心设备syslog指向21.14.0.41，其他设备指向21.14.0.48，防火墙指向21.14.0.47</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>LOG配置命令如下：</p>
+<pre>
+logging enable
+logging timestamp
+logging buffer-size <i><日志buffer大小></i>
+logging buffered alerts
+logging trap warnings
+logging host intranet <i><日志服务器IP></i>
+
+</pre>
+    <h5><span id="17"><span style="color: #008000;"><strong>1.7 NTP配置</strong></span></span></h5>
+        <p>NTP服务器【Network Time Protocol（NTP）】是用来使计算机时间同步化的一种协议，它可以使计算机对其服务器或时钟源（如石英钟，GPS等等)做同步化，它可以提供高精准度的时间校正（LAN上与标准间差小于1毫秒，WAN上几十毫秒），且可介由加密确认的方式来防止恶毒的协议攻击。</p>
+        <blockquote>
+            <ul>NTP配置原则：
+                <li>一级分行核心设备指向总行NTP;</li>
+                <li>一级分行非核心设备指向分行核心;</li>
+                <li>二级分行核心设备指向一级分行核心;</li>
+                <li>二级分行其他设备指向二级分行核心。</li>
+        </ul>
+        </blockquote>
+        <p>NTP部分配置说明：</p>
+        <p>表1-7  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NTP配置</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">ntp authenticate</td>
+                <td class="column-2">启用NTP 认证</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1"> ntp trusted-key <i>&lt;key_id&gt;</i></td>
+                <td class="column-2">指定NTP信任key id</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1"> ntp authentication-key <i>&lt;key_id&gt;</i> md5 <i>&lt;key&gt;</i></td>
+                <td class="column-2">指定key id对应的密钥，目前使用 {{ NTP_KEY }} </td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1"> ntp server <i>&lt;ntp主服务器&gt;</i> key <i>&lt;key_id&gt;</i> source <i>&lt;interface_name&gt;</i> prefer</td>
+                <td class="column-2">总行主NTP地址21.14.0.100</td>
+            </tr>
+            <tr class="row-6 even">
+                <td class="column-1"> ntp server <i>&lt;ntp备服务器&gt;</i> key <i>&lt;key_id&gt;</i> source <i>&lt;interface_name&gt;</i></td>
+                <td class="column-2">总行备NTP地址21.14.0.101</td>
+            </tr>
+        </tbody>
+        </table>
+
+        <p>NTP配置命令如下：</p>
+<pre>
+ntp authenticate
+ntp trusted-key <i>&lt;key_id&gt;</i>
+ntp authentication-key <i>&lt;key_id&gt;</i> md5 <i>&lt;key&gt;</i>
+ntp server <i>&lt;ntp主服务器&gt;</i> key <i>&lt;key_id&gt;</i> source <i>&lt;interface_name&gt;</i> prefer
+ntp server <i>&lt;ntp备服务器&gt;</i> key <i>&lt;key_id&gt;</i> source <i>&lt;interface_name&gt;</i>
+</pre>
+    <h5><span id="18"><span style="color: #008000;"><strong>1.8 防火墙端口配置</strong></span></span></h5>
+        <p>防火墙未使用端口要求关闭</p>
+        <p>防火墙端口配置命令如下：</p>
+<pre>
+interface gX/X
+shutdown
+</pre>
+
+</div>
+{% include 'backtotop.html'%}
+</body>
+</html>

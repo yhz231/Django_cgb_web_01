@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="068e8555-ef42-4931-b671-8a4b720ffebc" name="默认的" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,200 +36,117 @@
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1379888162">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.12" value="2" />
+          <entry key="project.open.time.13" value="1" />
+          <entry key="project.open.time.17" value="1" />
+          <entry key="project.open.time.8" value="2" />
+          <entry key="project.opened" value="8" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="A3MCEC~U" value="2" />
+          <entry key="css" value="13" />
+          <entry key="html" value="52" />
+          <entry key="jpg" value="1" />
+          <entry key="js" value="2" />
+          <entry key="log" value="2" />
+          <entry key="md" value="1" />
+          <entry key="pid" value="1" />
+          <entry key="py" value="142" />
+          <entry key="txt" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CSS" value="13" />
+          <entry key="HTML" value="52" />
+          <entry key="Image" value="1" />
+          <entry key="JavaScript" value="2" />
+          <entry key="Markdown" value="1" />
+          <entry key="PLAIN_TEXT" value="6" />
+          <entry key="Python" value="142" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="css" value="117" />
+          <entry key="dummy" value="3" />
+          <entry key="html" value="3941" />
+          <entry key="ini" value="36" />
+          <entry key="js" value="2" />
+          <entry key="py" value="17516" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="CSS" value="117" />
+          <entry key="HTML" value="3941" />
+          <entry key="JavaScript" value="2" />
+          <entry key="PLAIN_TEXT" value="39" />
+          <entry key="Python" value="17510" />
+          <entry key="RegExp" value="6" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="DjangoWeb" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="serverlist.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webserver/templates/serverlist.html">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/packetTracert/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="28" column="46" lean-forward="false" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webserver/templates/login.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="15" column="11" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webserver/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+            <state relative-caret-position="427">
+              <caret line="16" column="47" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
               <folding>
-                <element signature="e#0#28#0" expanded="true" />
+                <marker date="1541776530301" expanded="true" signature="220:544" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webserver/tests.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/packetTracert/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="-1076">
+              <caret line="553" column="71" lean-forward="true" selection-start-line="553" selection-start-column="71" selection-end-line="553" selection-end-column="71" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+                <marker date="1541945537763" expanded="true" signature="9314:9319" ph="..." />
+                <marker date="1541945537763" expanded="true" signature="9939:12828" ph="..." />
+                <marker date="1541945537763" expanded="true" signature="12854:12863" ph="..." />
+                <marker date="1541945537763" expanded="true" signature="14882:15592" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webserver/forms.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/packetTracert/ccp_util.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="297">
-              <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webserver/admin.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webserver/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="20" column="1" lean-forward="false" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+              <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
               <folding>
-                <element signature="e#0#30#0" expanded="true" />
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DjangoWeb/urls.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/DjangoWeb/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/webserver/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="82" column="7" lean-forward="true" selection-start-line="82" selection-start-column="7" selection-end-line="82" selection-end-column="7" />
-              <folding>
-                <element signature="e#50#86#0" expanded="true" />
-                <marker date="1512536330879" expanded="true" signature="16566:17528" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="16850:16907" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="16936:17139" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="17026:17116" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="17570:19787" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="17823:17982" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="18117:19167" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="18154:18335" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="19194:19225" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="19354:19729" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="19816:20392" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="19821:19845" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1512536330879" expanded="true" signature="20423:20855" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="20428:20463" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1512536330879" expanded="true" signature="20499:20825" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="20575:20772" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="20599:20661" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="20697:20762" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="20886:21271" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="20891:20923" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1512536330879" expanded="true" signature="20955:21245" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="21032:21192" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="21128:21182" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="21306:21710" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="21311:21335" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1512536330879" expanded="true" signature="21363:21688" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="21439:21635" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="21534:21625" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="21745:22149" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="21750:21773" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1512536330879" expanded="true" signature="21801:22127" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="21877:22074" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="21972:22064" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="22177:22589" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="22182:22205" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1512536330879" expanded="true" signature="22233:22567" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="22309:22514" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="22404:22504" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="22617:22988" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="22622:22644" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1512536330879" expanded="true" signature="22672:22966" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="22748:22913" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="22843:22903" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="23006:23738" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="23011:23031" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1512536330879" expanded="true" signature="23437:23659" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="23779:26030" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="23871:25871" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="23946:25814" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="24284:24545" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="24352:24545" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="24455:24545" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="24608:25753" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="24629:25671" ph="..." />
-                <marker date="1512536330879" expanded="true" signature="24672:24747" ph="&quot;...&quot;" />
-                <marker date="1512536330879" expanded="true" signature="24753:24827" ph="&quot;...&quot;" />
-                <marker date="1512536330879" expanded="true" signature="24839:24915" ph="&quot;...&quot;" />
-                <marker date="1512536330879" expanded="true" signature="24927:25177" ph="&quot;...&quot;" />
-                <marker date="1512536330879" expanded="true" signature="25927:25979" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DjangoWeb/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="792">
-              <caret line="86" column="22" lean-forward="false" selection-start-line="86" selection-start-column="22" selection-end-line="86" selection-end-column="22" />
-              <folding>
-                <marker date="1512536294175" expanded="true" signature="285:490" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="302:488" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="492:641" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="665:928" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="958:1086" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="1127:1246" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="1264:1378" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="1396:1617" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="1635:1800" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="1817:2151" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="2243:2281" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="2284:2367" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="2396:2513" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="2666:3002" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="3101:3598" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="3107:3595" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="3244:3588" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="3308:3577" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="3624:3850" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="3854:4155" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="4167:4707" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="4241:4344" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="4274:4338" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="4364:4540" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="4389:4534" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="4559:4705" ph="..." />
-                <marker date="1512536294175" expanded="true" signature="4587:4698" ph="..." />
-              </folding>
+            <state relative-caret-position="-1432">
+              <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -243,88 +159,103 @@
         <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>installed_apps</find>
-      <find>django.contrib.messages.context_processors.messages</find>
-      <find>User</find>
-      <find>password</find>
-      <find>accounts</find>
-      <find>changeMenu</find>
-      <find>hidMenu</find>
-      <find>div1</find>
-      <find>200</find>
-      <find>1000</find>
-      <find>color</find>
-      <find>DEBUG</find>
-      <find>sh</find>
-      <find>CLASS</find>
-      <find>PROCESSORS</find>
-      <find>search_name</find>
-      <find>initTable</find>
-      <find>url</find>
-      <find>form</find>
-      <find>adstyle</find>
-      <find>CsrfViewMiddleware</find>
-      <find>.table</find>
-      <find>table</find>
-      <find>overflow</find>
-      <find>qiantaishouye</find>
-      <find>btn-primary</find>
-      <find>col-sm-offset-4</find>
-      <find>update</find>
-      <find>UpdateView</find>
-      <find>templates</find>
+      <find>lo.jpg</find>
+      <find>blockquote</find>
+      <find>pre</find>
+      <find>Response</find>
+      <find>login_required</find>
+      <find>session</find>
+      <find>userli</find>
+      <find>os</find>
+      <find>OsVersion</find>
+      <find>index</find>
+      <find>remark</find>
+      <find>src_network2a</find>
+      <find>src_network2b</find>
+      <find>src_network2c</find>
+      <find>src_network4a</find>
+      <find>src_network3</find>
+      <find>dst_network1a</find>
+      <find>dst_network2a</find>
+      <find>dst_network3a</find>
+      <find>dst_network4a</find>
+      <find>acl_name3</find>
+      <find>protocol1</find>
+      <find>src_service_object</find>
+      <find>dst_service_object</find>
+      <find>service_object</find>
+      <find>cache</find>
+      <find>17</find>
+      <find>uuid</find>
+      <find>acl_database</find>
+      <find>DNSException</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="PATH_TO_GIT" value="C:\Program Files\Git\bin\git.exe" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/manage.py" />
-        <option value="$PROJECT_DIR$/DjangoWeb/static/css/adstyle.css" />
-        <option value="$PROJECT_DIR$/DjangoWeb/urls.py" />
-        <option value="$PROJECT_DIR$/webserver/static/css/adstyle.css" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/69bf6210-43e5-4626-84df-f99d47458d91/console.sql" />
-        <option value="$PROJECT_DIR$/DjangoWeb/models.py" />
-        <option value="$PROJECT_DIR$/webserver/templates/nowtime.html" />
-        <option value="$PROJECT_DIR$/static/css/menustyle.css" />
-        <option value="$PROJECT_DIR$/webserver/templates/index.html" />
-        <option value="$PROJECT_DIR$/static/css/menu.css" />
-        <option value="$PROJECT_DIR$/static/css/test.css" />
-        <option value="$PROJECT_DIR$/static/js/test.js" />
-        <option value="$PROJECT_DIR$/webserver/templates/test.html" />
-        <option value="$PROJECT_DIR$/static/js/alert.js" />
-        <option value="$PROJECT_DIR$/static/css/alert.css" />
-        <option value="$PROJECT_DIR$/webserver/templates/useradd.html" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/78a533a9-3d8d-4541-a339-350877732409/console.sql" />
-        <option value="$PROJECT_DIR$/static/js/bootstrap/jquery-1.8.3.min.js" />
-        <option value="$PROJECT_DIR$/webserver/templates/server_table.html" />
-        <option value="$PROJECT_DIR$/static/css/bootstrap/bootstrap.css" />
-        <option value="$PROJECT_DIR$/webserver/templates/header.html" />
-        <option value="$PROJECT_DIR$/static/css/adstyle.css" />
-        <option value="$PROJECT_DIR$/static/css/bootstrap/bootstrap-table.css" />
-        <option value="$PROJECT_DIR$/webserver/templates/serverlist.html" />
-        <option value="$PROJECT_DIR$/webserver/templates/menu.html" />
         <option value="$PROJECT_DIR$/webserver/templates/login.html" />
-        <option value="$PROJECT_DIR$/DjangoWeb/settings.py" />
         <option value="$PROJECT_DIR$/DjangoWeb/__init__.py" />
         <option value="$PROJECT_DIR$/webserver/templates/userlist.html" />
         <option value="E:/Study/Django参考/DevOps-master/devops/views.py" />
-        <option value="$PROJECT_DIR$/webserver/urls.py" />
         <option value="$PROJECT_DIR$/webserver/templates/useralter.html" />
-        <option value="$PROJECT_DIR$/static/css/userstyle.css" />
         <option value="E:/Study/Django参考/DevOps-master/devops/models.py" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/4c6706b3-3c3d-4aad-a758-7686b27ef05c/console.sql" />
         <option value="$PROJECT_DIR$/webserver/models.py" />
         <option value="$PROJECT_DIR$/webserver/templates/serveradd.html" />
         <option value="$PROJECT_DIR$/webserver/forms.py" />
+        <option value="$PROJECT_DIR$/webserver/templates/baseline/baseline.html" />
+        <option value="$PROJECT_DIR$/webserver/templates/baseline/cisco.html" />
+        <option value="$PROJECT_DIR$/webserver/templates/baseline/baseline-menu.html" />
+        <option value="$PROJECT_DIR$/static/css/userstyle.css" />
+        <option value="$PROJECT_DIR$/templates/baseline/cisco.html" />
+        <option value="$PROJECT_DIR$/static/css/public.css" />
+        <option value="$PROJECT_DIR$/templates/baseline/baseline.html" />
+        <option value="$PROJECT_DIR$/static/css/bootstrap/bootstrap.min.css" />
+        <option value="$PROJECT_DIR$/static/css/adstyle.css" />
+        <option value="$PROJECT_DIR$/templates/baseline/cisco-swios.html" />
+        <option value="$PROJECT_DIR$/templates/baseline/h3c-rv7.html" />
+        <option value="$PROJECT_DIR$/baseline/urls.py" />
+        <option value="$PROJECT_DIR$/templates/baseline/download.html" />
+        <option value="$PROJECT_DIR$/templates/baseline/baseline-menu.html" />
+        <option value="$PROJECT_DIR$/static/js/menu.js" />
+        <option value="$PROJECT_DIR$/baseline/views.py" />
+        <option value="$PROJECT_DIR$/templates/fhindex.html" />
+        <option value="$PROJECT_DIR$/templates/fhmenu.html" />
+        <option value="$PROJECT_DIR$/templates/login.html" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/DjangoWeb/uwsgi.py" />
+        <option value="$PROJECT_DIR$/DjangoWeb/uwsgi.ini" />
+        <option value="$PROJECT_DIR$/firewallAccount/urls.py" />
+        <option value="$PROJECT_DIR$/firewallAccount/migrations/0001_initial.py" />
         <option value="$PROJECT_DIR$/webserver/views.py" />
+        <option value="$PROJECT_DIR$/webserver/urls.py" />
+        <option value="$PROJECT_DIR$/DjangoWeb/urls.py" />
+        <option value="$PROJECT_DIR$/baseline/models.py" />
+        <option value="$PROJECT_DIR$/DjangoWeb/users.py" />
+        <option value="$PROJECT_DIR$/templates/menu.html" />
+        <option value="$PROJECT_DIR$/firewallAccount/templatefilters.py" />
+        <option value="$PROJECT_DIR$/firewallAccount/templatetags/templatefilters.py" />
+        <option value="$PROJECT_DIR$/templates/firewallAccount/upload.html" />
+        <option value="$PROJECT_DIR$/firewallAccount/models.py" />
+        <option value="$PROJECT_DIR$/templates/firewallAccount/display.html" />
+        <option value="$PROJECT_DIR$/firewallAccount/views.py" />
+        <option value="$PROJECT_DIR$/DjangoWeb/settings.py" />
+        <option value="$PROJECT_DIR$/packetTracert/protocol_values.py" />
+        <option value="$PROJECT_DIR$/packetTracert/models.py" />
+        <option value="$PROJECT_DIR$/packetTracert/ccp_util.py" />
+        <option value="$PROJECT_DIR$/packetTracert/views.py" />
       </list>
     </option>
   </component>
@@ -342,100 +273,96 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-11" />
-    <option name="width" value="1932" />
-    <option name="height" value="1056" />
+    <option name="x" value="20" />
+    <option name="y" value="-15" />
+    <option name="width" value="1219" />
+    <option name="height" value="735" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="Py3.4-CGB" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="Py3.4-CGB" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="DjangoWeb" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Py3.4-CGB" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="packetTracert" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="DjangoWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DjangoWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="Py3.4-CGB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Py3.4-CGB" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="DjangoWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DjangoWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="DjangoWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="Py3.4-CGB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Py3.4-CGB" type="462c0819:PsiDirectoryNode" />
+              <item name="firewallAccount" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="DjangoWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DjangoWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="webserver" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DjangoWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DjangoWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="webserver" type="462c0819:PsiDirectoryNode" />
+              <item name="Py3.4-CGB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Py3.4-CGB" type="462c0819:PsiDirectoryNode" />
+              <item name="firewallAccount" type="462c0819:PsiDirectoryNode" />
               <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="DjangoWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DjangoWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="webserver" type="462c0819:PsiDirectoryNode" />
+              <item name="Py3.4-CGB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Py3.4-CGB" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scratches">
-        <subPane>
-          <expand>
             <path>
-              <item name="" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Extensions" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
-            </path>
-            <path>
-              <item name="" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Extensions" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
-              <item name="com.intellij.database" type="61db50fb:ScratchProjectViewPane$MyPsiNode" />
+              <item name="Py3.4-CGB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Py3.4-CGB" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="firewallAccount" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-    <property name="last_opened_file_path" value="H:/blog" />
-    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL&#10;Amazon Redshift&#10;Sqlite (Xerial)&#10;DDL Data Source" />
-    <property name="settings.editor.splitter.proportion" value="0.22113504" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL&#10;Amazon Redshift&#10;Sqlite (Xerial)&#10;DDL Data Source" />
+    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.splitter.proportion" value="0.22113504" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\192.168.137.128\Py3.4-CGB\templates" />
+      <recent name="\\192.168.137.128\Py3.4-CGB\webserver\templates\baseline" />
       <recent name="F:\DjangoWeb\static\js\bootstrap" />
       <recent name="F:\DjangoWeb\static\css" />
       <recent name="F:\DjangoWeb\static\css\bootstrap" />
-      <recent name="F:\DjangoWeb\static\img" />
-      <recent name="F:\DjangoWeb\webserver\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\192.168.137.128\Py3.4-CGB\firewallAccount\templatetags" />
+      <recent name="\\192.168.137.128\Py3.4-CGB\webserver" />
+      <recent name="\\192.168.137.128\Py3.4-CGB" />
+      <recent name="\\192.168.137.128\Py3.4-CGB\webserver\templates\baseline" />
       <recent name="F:\DjangoWeb\static\css" />
-      <recent name="F:\DjangoWeb\webserver" />
-      <recent name="F:\DjangoWeb\templates" />
-      <recent name="F:\DjangoWeb" />
-      <recent name="F:\DjangoWeb\webserver\static" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -450,38 +377,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Django server.DjangoWeb">
-    <configuration name="DjangoWeb" type="Python.DjangoServer" factoryName="Django server">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="DJANGO_SETTINGS_MODULE" value="DjangoWeb.settings" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="DjangoWeb" />
-      <option name="launchJavascriptDebuger" value="true" />
-      <option name="port" value="8000" />
-      <option name="host" value="localhost" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="http://localhost:8000/" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="true" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-    </configuration>
+  <component name="RunManager" selected="Unknown.DjangoWeb1813515494">
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -546,25 +442,6 @@
       <option name="ADDITIONAL_ARGS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="DjangoWeb" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
     <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -588,18 +465,13 @@
       <option name="customRunCommand" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
       <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <module name="DjangoWeb" />
-      <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
       <command value="run" />
@@ -608,43 +480,30 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="tests" factoryName="Doctests">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="DjangoWeb" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="DjangoWeb" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Unittests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="DjangoWeb" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;.&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DjangoWeb" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -655,14 +514,18 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="DjangoWeb" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="views" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DjangoWeb" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -673,27 +536,95 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="DjangoWeb" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/webserver/views.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
-    <list size="3">
-      <item index="0" class="java.lang.String" itemvalue="Django server.DjangoWeb" />
-      <item index="1" class="java.lang.String" itemvalue="Python.views" />
-      <item index="2" class="java.lang.String" itemvalue="Python.manage" />
+    <configuration name="DjangoWeb" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="DjangoWeb.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="DjangoWeb" />
+      <option name="launchJavascriptDebuger" value="true" />
+      <option name="port" value="8000" />
+      <option name="host" value="localhost" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="http://localhost:8000/" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="true" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <module name="DjangoWeb" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <module name="DjangoWeb" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <module name="DjangoWeb" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.views" />
+      <item itemvalue="Python.manage" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Python.views" />
-        <item index="1" class="java.lang.String" itemvalue="Python.manage" />
+      <list>
+        <item itemvalue="Python.views" />
+        <item itemvalue="Python.manage" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -719,36 +650,66 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25426438" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32814237" sideWeight="0.49573562" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22803114" sideWeight="0.53837955" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13113007" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32814237" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30367073" sideWeight="0.46162048" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10074627" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="数据库" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15565032" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24471635" sideWeight="0.47014925" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3482143" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925472" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22803114" sideWeight="0.46162048" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32814237" sideWeight="0.47014925" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.4978678" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" order="0" weight="0.25" />
+      <window_info id="Favorites" order="1" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.21130952" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49573562" weight="0.32814237" />
+      <window_info anchor="bottom" id="调试" order="7" sideWeight="0.47014925" weight="0.24471635" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="File Transfer" order="9" visible="true" weight="0.3482143" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.46162048" weight="0.30367073" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.53837955" side_tool="true" weight="0.22735043" />
+      <window_info anchor="bottom" id="Thumbnails" order="12" weight="0.32925472" />
+      <window_info anchor="bottom" id="Database Console" order="13" sideWeight="0.47014925" weight="0.32814237" />
+      <window_info anchor="bottom" id="找到" order="14" sideWeight="0.4978678" weight="0.32924107" />
+      <window_info anchor="bottom" id="Python Console" order="15" weight="0.32814237" />
+      <window_info anchor="bottom" id="运行" order="16" sideWeight="0.46162048" weight="0.22803114" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="数据库" order="3" visible="true" weight="0.15565032" />
+      <window_info anchor="right" id="Coverage" order="4" side_tool="true" />
+      <window_info anchor="right" id="Data View" order="5" weight="0.10074627" />
+      <window_info anchor="right" id="Database" order="6" weight="0.13113007" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Structure" order="0" weight="0.25" />
+      <window_info id="Favorites" order="1" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.3296131" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49573562" weight="0.32814237" />
+      <window_info anchor="bottom" id="调试" order="7" sideWeight="0.47014925" weight="0.24471635" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="File Transfer" order="9" visible="true" weight="0.3482143" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.46162048" weight="0.30367073" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.53837955" side_tool="true" weight="0.22735043" />
+      <window_info anchor="bottom" id="Thumbnails" order="12" weight="0.32925472" />
+      <window_info anchor="bottom" id="Database Console" order="13" sideWeight="0.47014925" weight="0.32814237" />
+      <window_info anchor="bottom" id="找到" order="14" sideWeight="0.4978678" weight="0.32924107" />
+      <window_info anchor="bottom" id="Python Console" order="15" weight="0.32814237" />
+      <window_info anchor="bottom" id="运行" order="16" sideWeight="0.46162048" weight="0.22803114" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="数据库" order="3" visible="true" weight="0.15565032" />
+      <window_info anchor="right" id="Coverage" order="4" side_tool="true" />
+      <window_info anchor="right" id="Data View" order="5" weight="0.10074627" />
+      <window_info anchor="right" id="Database" order="6" weight="0.13113007" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -760,7 +721,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/site-packages/Django-1.11.3-py3.6.egg/django/shortcuts.py</url>
+          <url>file:$PROJECT_DIR$/../../////////C:/Users/Administrator/AppData/Local/Programs/Python/Python36-32/Lib/site-packages/Django-1.11.3-py3.6.egg/django/shortcuts.py</url>
           <line>82</line>
           <option name="timeStamp" value="113" />
         </line-breakpoint>
@@ -768,431 +729,296 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="118" />
     </breakpoint-manager>
-    <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://E:/Study/Django参考/DevOps-master/devops/views.py">
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/webserver/apps.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/webserver/collectmemory.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/baseline/apps.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/webserver/admin.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/webserver/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-298">
-          <caret line="123" column="18" lean-forward="false" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
+        <state relative-caret-position="243">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://E:/Study/Django参考/devops/api/cobbler_api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-925">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/Django参考/devops/api/cobbler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/Django参考/devops/api/cabinet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/Django参考/devops/api/auth.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/Django参考/devops/api/idc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/Django参考/devops/api/jigui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/Django参考/devops/api/login.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/Django参考/devops/api/power.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/Django参考/devops/api/report.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/Django参考/devops/api/zbhost.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/Django参考/devops/api/switch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-55">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/Django参考/devops/api/user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="84" column="12" lean-forward="false" selection-start-line="84" selection-start-column="12" selection-end-line="84" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/Django参考/devops/api/zabbix.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-55">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/Django参考/devops/api/zabbix_api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-55">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/Django参考/devops/api/zabbix_Graph_api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-55">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/Django参考/devops/api/role.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/Django参考/devops/api/select.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="14" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/Django参考/devops/api/selectd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="22" column="47" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/Django参考/devops/api/server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-264">
-          <caret line="134" column="48" lean-forward="false" selection-start-line="134" selection-start-column="48" selection-end-line="134" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/site-packages/Django-1.11.3-py3.6.egg/django/shortcuts.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/site-packages/Django-1.11.3-py3.6.egg/django/core/handlers/base.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/site-packages/Django-1.11.3-py3.6.egg/django/core/handlers/exception.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/site-packages/Django-1.11.3-py3.6.egg/django/contrib/auth/decorators.py" />
-    <entry file="file://$PROJECT_DIR$/webserver/templates/useralter.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="36" column="35" lean-forward="false" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/Django参考/DevOps-master/mysite/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-600">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/4c6706b3-3c3d-4aad-a758-7686b27ef05c/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Study/资料/python实例手册.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/cb518f52/4c6706b3-3c3d-4aad-a758-7686b27ef05c/OBServer.webserver_webserver" />
-    <entry file="file://E:/Study/Django参考/DevOps-master/devops/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="62" column="4" lean-forward="false" selection-start-line="62" selection-start-column="4" selection-end-line="63" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/cb518f52/4c6706b3-3c3d-4aad-a758-7686b27ef05c/OBServer.server" />
-    <entry file="file://$PROJECT_DIR$/webserver/templates/useradd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
-          <caret line="77" column="7" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="77" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/templates/serveradd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1425">
-          <caret line="57" column="20" lean-forward="false" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/templates/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/templates/userlist.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1675">
-          <caret line="67" column="71" lean-forward="false" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/alert.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="39" lean-forward="true" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/menu.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1729">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/userstyle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7225">
-          <caret line="289" column="22" lean-forward="false" selection-start-line="289" selection-start-column="22" selection-end-line="289" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/public.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-104">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/adstyle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/templates/serverlist.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="28" column="46" lean-forward="false" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/templates/login.html">
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/webserver/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
-          <caret line="15" column="11" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-          <folding />
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/models.py">
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/templates/fhindex.html" />
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/templates/fhmenu.html" />
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/templates/useradd.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="30" column="14" lean-forward="true" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/DjangoWeb/uwsgi.ini">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
-          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
+          <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/tests.py">
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/DjangoWeb/uwsgi.pid">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/DjangoWeb/uwsgi.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/django_prbac/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="186">
+          <caret line="259" column="8" selection-start-line="259" selection-start-column="8" selection-end-line="259" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/forms.py">
+    <entry file="file:$PROJECT_DIR$/../..//$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/django/db/models/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="594" column="8" selection-start-line="594" selection-start-column="8" selection-end-line="594" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="10" lean-forward="true" selection-end-line="23" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/templates/baseline/cisco.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1242">
+          <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/baseline/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/firewallAccount/tempfile/A3MCEC~U" />
+    <entry file="file:$PROJECT_DIR$/../..//$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/1229051315/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="80" column="24" selection-start-line="80" selection-start-column="17" selection-end-line="80" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/firewallAccount/migrations/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/firewallAccount/migrations/0002_auto_20181028_0752.py" />
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/webserver/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/webserver/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="26" column="27" lean-forward="true" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/webserver/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1585" />
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/django-radius/radiusauth/backends/radius.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
-          <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-          <folding />
+          <caret line="11" column="32" lean-forward="true" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/admin.py">
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/django-radius/radiusauth/backends/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="27">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/urls.py">
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/baseline/migrations/0001_initial.py" />
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/DjangoWeb/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="20" column="1" lean-forward="false" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="972">
+          <caret line="44" column="10" selection-start-line="44" selection-start-column="10" selection-end-line="44" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DjangoWeb/urls.py">
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/firewallAccount/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1134">
+          <caret line="45" selection-start-line="45" selection-end-line="53" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/baseline/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-54">
+          <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-end-line="4" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/templates/menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-378">
+          <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/templates/header.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/DjangoWeb/users.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" column="9" selection-start-line="2" selection-end-line="2" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/templates/baseline/backtotop.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/templates/baseline/cisco-asa.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3105">
+          <caret line="115" column="23" selection-start-line="113" selection-end-line="132" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/templates/baseline/baseline-menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/static/js/menu.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
+          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DjangoWeb/settings.py">
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/firewallAccount/templatetags/templatefilters.py" />
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/templates/firewallAccount/upload.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="86" column="22" lean-forward="false" selection-start-line="86" selection-start-column="22" selection-end-line="86" selection-end-column="22" />
+        <state relative-caret-position="810">
+          <caret line="30" column="11" lean-forward="true" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/baseline/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/firewallAccount/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="19" column="7" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/templates/firewallAccount/display.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="26" column="12" lean-forward="true" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/firewallAccount/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/packetTracert/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/packetTracert/protocol_values.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2124">
+          <caret line="99" column="17" lean-forward="true" selection-start-line="99" selection-start-column="17" selection-end-line="99" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/firewallAccount/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="137" column="86" selection-start-line="137" selection-start-column="36" selection-end-line="137" selection-end-column="91" />
           <folding>
-            <marker date="1512536294175" expanded="true" signature="285:490" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="302:488" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="492:641" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="665:928" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="958:1086" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="1127:1246" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="1264:1378" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="1396:1617" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="1635:1800" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="1817:2151" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="2243:2281" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="2284:2367" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="2396:2513" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="2666:3002" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="3101:3598" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="3107:3595" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="3244:3588" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="3308:3577" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="3624:3850" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="3854:4155" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="4167:4707" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="4241:4344" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="4274:4338" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="4364:4540" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="4389:4534" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="4559:4705" ph="..." />
-            <marker date="1512536294175" expanded="true" signature="4587:4698" ph="..." />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webserver/views.py">
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/packetTracert/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="82" column="7" lean-forward="true" selection-start-line="82" selection-start-column="7" selection-end-line="82" selection-end-column="7" />
+        <state relative-caret-position="427">
+          <caret line="16" column="47" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
           <folding>
-            <element signature="e#50#86#0" expanded="true" />
-            <marker date="1512536330879" expanded="true" signature="16566:17528" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="16850:16907" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="16936:17139" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="17026:17116" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="17570:19787" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="17823:17982" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="18117:19167" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="18154:18335" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="19194:19225" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="19354:19729" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="19816:20392" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="19821:19845" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1512536330879" expanded="true" signature="20423:20855" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="20428:20463" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1512536330879" expanded="true" signature="20499:20825" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="20575:20772" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="20599:20661" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="20697:20762" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="20886:21271" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="20891:20923" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1512536330879" expanded="true" signature="20955:21245" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="21032:21192" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="21128:21182" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="21306:21710" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="21311:21335" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1512536330879" expanded="true" signature="21363:21688" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="21439:21635" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="21534:21625" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="21745:22149" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="21750:21773" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1512536330879" expanded="true" signature="21801:22127" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="21877:22074" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="21972:22064" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="22177:22589" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="22182:22205" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1512536330879" expanded="true" signature="22233:22567" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="22309:22514" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="22404:22504" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="22617:22988" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="22622:22644" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1512536330879" expanded="true" signature="22672:22966" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="22748:22913" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="22843:22903" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="23006:23738" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="23011:23031" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1512536330879" expanded="true" signature="23437:23659" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="23779:26030" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="23871:25871" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="23946:25814" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="24284:24545" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="24352:24545" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="24455:24545" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="24608:25753" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="24629:25671" ph="..." />
-            <marker date="1512536330879" expanded="true" signature="24672:24747" ph="&quot;...&quot;" />
-            <marker date="1512536330879" expanded="true" signature="24753:24827" ph="&quot;...&quot;" />
-            <marker date="1512536330879" expanded="true" signature="24839:24915" ph="&quot;...&quot;" />
-            <marker date="1512536330879" expanded="true" signature="24927:25177" ph="&quot;...&quot;" />
-            <marker date="1512536330879" expanded="true" signature="25927:25979" ph="..." />
+            <marker date="1541776530301" expanded="true" signature="220:544" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/DjangoWeb/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1432">
+          <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/packetTracert/ccp_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:$PROJECT_DIR$/../..//$PROJECT_DIR$/packetTracert/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1076">
+          <caret line="553" column="71" lean-forward="true" selection-start-line="553" selection-start-column="71" selection-end-line="553" selection-end-column="71" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+            <marker date="1541945537763" expanded="true" signature="9314:9319" ph="..." />
+            <marker date="1541945537763" expanded="true" signature="9939:12828" ph="..." />
+            <marker date="1541945537763" expanded="true" signature="12854:12863" ph="..." />
+            <marker date="1541945537763" expanded="true" signature="14882:15592" ph="..." />
           </folding>
         </state>
       </provider>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<link href="{%static "css/adstyle.css" %}" rel="stylesheet" type="text/css" />
+{% include "header.html" %}
+<style>
+    body{
+        background-color: #F2F2F2;
+        margin-left: 220px;
+        margin-top: 60px;
+        padding: 20px;
+    }
+</style>
+<body>
+{% include 'baseline/baseline-menu.html' %}
+<div class="content" align="left">
+    <h5><span style="color: #008000;"><strong>分行基线配置模版版本说明</strong></span></h5>
+        <p>分行基线配置模版按要求每年度进行一次内容更新。为了使模版版本管理更加规模，采用以下版本命名规则：</p>
+        <h3 class="well">思科基线配置模版--A(2018.07)<br><span style="font-size: 15px">|*********&nbsp;&nbsp;模版名称&nbsp;&nbsp;*********|*版本号*|发布日期</span></h3>
+        <blockquote class="blockq"><p>模版名称：标识相关的设备厂家</p>
+        <p>版本号：按A-Z的字母顺序标识版本，对于有局部修改的情况采用 AA ,AB等标识有局部更新的版本</p>
+        <p>发布日期：标识版本首次发布日期</p></blockquote>
+     <h5><span style="color: #008000;"><strong>版本更新说明</strong></span></h5>
+        <div>
+            <ul ><strong>思科基线配置模板--A(2018.07)</strong></ul>
+                <li class="li-disc">采用新的配置模版划分方法，分为交换机IOS,路由器IOS，路由器IOX-XE ,防火墙ASA</li>
+                <li class="li-disc">更新了优化服务以及关闭不必要服务内容，新增各个服务简要说明</li>
+                <li class="li-disc">更新了生产交换机的接口配置要求，新增启用storm-control特性防范网络风暴</li>
+                <li class="li-disc">更新了办公交换机的接口配置要求，新增启用dot1x配置相关的配置</li>
+        </div><br>
+        <div>
+            <ul class="li-disc"><strong>华为设备基线配置模板--A(2018.07)</strong></ul>
+                <li class="li-disc">采用新的配置模版划分方法，分为CE系列交换机,S系列交换机，NE系列路由器 ,AR系列路由器</li>
+                <li class="li-disc">更新了生产交换机的接口配置要求，新增启用storm-control特性防范网络风暴</li>
+                <li class="li-disc">更新了办公交换机的接口配置要求，新增启用dot1x配置相关的配置</li>
+                <li class="li-disc">更新了S系列交换机的dot1x的配置，分为传统模式与统一模式的</li>
+        </div><br>
+        <div>
+            <ul class="li-disc"><strong>华三设备基线配置模板--A(2018.07)</strong></ul>
+                <li class="li-disc">按新的配置模版划分方法，分为ComwareV5交换机，ComwareV7交换机，ComwareV7路由器</li>
+                <li class="li-disc">更新了优化服务以及关闭不必要服务内容，新增各个服务简要说明</li>
+                <li class="li-disc">更新了生产交换机的接口配置要求，新增启用storm-constrain特性防范网络风暴</li>
+                <li class="li-disc">更新了办公换机的接口配置要求，新增启用dot1x配置相关的配置</li>
+        </div><br>
+        <div>
+            <ul class="li-disc"><strong>迈普设备基线配置模板--A(2018.07)</strong></ul>
+                <li class="li-disc">按新的配置模版划分方法，分为20型号交换机,00型号交换机，路由器</li>
+                <li class="li-disc">更新了优化服务以及关闭不必要服务内容，新增各个服务简要说明</li>
+                <li class="li-disc">更新了生产交换机的接口配置要求，新增启用storm-control特性防范网络风暴</li>
+                <li class="li-disc">更新了办公交换机的接口配置要求，新增启用dot1x配置相关的配置</li>
+        </div><br>
+
+</div>
+</body>
+</html>

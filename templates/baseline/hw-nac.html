@@ -1,0 +1,383 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<link href="{%static "css/adstyle.css" %}" rel="stylesheet" type="text/css" />
+{% include "header.html" %}
+<style>
+    body{
+        background-color: #F2F2F2;
+        margin-left: 220px;
+        margin-top: 60px;
+        padding: 20px;
+    }
+</style>
+<body>
+{% include 'baseline/baseline-menu.html' %}
+<div class="content" align="left">
+  <div class="head_h1"><h1>华为NAC</h1></div>
+  <div id="toc_container" class="toc_light_blue no_bullets";">
+  	<p class="toc_title">目录结构</p>
+  	<ul class="toc_list">
+  		<li><a href="#11">1.1 NAC简介</a></li>
+  		<li><a href="#12">1.2 NAC基本原理及三种认证方式</a></li>
+  		<li><a href="#13">1.3 802.1X认证方式</a></li>
+  		<li><a href="#14">1.4 MAC认证方式</a></li>
+  		<li><a href="#15">1.5 NAC模式：统一模式与传统模式</a></li>
+  	</ul>
+  </div>
+
+  <h5><span id="11" style="color: #008000;"><strong>1.1 NAC简介</strong></span></h5>
+    <p>NAC（Network Admission Control）称为网络接入控制，是一种“端到端”的安全结构，包括802.1x认证、MAC认证与Portal认证。随着企业网络的应用和发展，病毒、木马、间谍软件、网络攻击等各种信息安全威胁也在不断增加。在传统的企业网络建设思路中，一般认为企业内网是安全的，安全威胁主要来自外界。但是研究证明，80%的网络安全漏洞都存在于网络内部，它们对网络的破坏程度和范围持续扩大，经常引起系统崩溃、网络瘫痪。另外，内部员工在浏览某些网站时，一些间谍软件、木马程序等恶意软件也会不知不觉地被下载到电脑中，并且在企业内网传播，产生严重的安全隐患。</p>
+    <p>因此，随着安全挑战的不断升级，仅通过传统的安全措施已经远远不够，安全模型需要由被动模式向主动模式转变，从根源（终端）彻底解决网络安全问题，提高整个企业的信息安全水平。</p>
+    <p>NAC安全解决方案从接入网络的终端安全控制入手，将终端安全状况和网络准入控制结合在一起，通过检查、隔离、加固和审计等手段，加强网络用户终端的主动防御能力，保证企业中每个终端的安全性，进而保护企业整网的安全性。</p>
+    <p>如图1所示，NAC安全构架包括三个关键组件：NAC终端、网络准入设备和准入服务器。</p>
+    <div style="margin: auto; padding:3em ;width: 50%;"><img src="{% static 'img/baseline/hw-nac1-1.png' %}" alt="" ></div>
+      <ul style="list-style-type: disc;">
+        <li class="li-disc">NAC终端：作为NAC客户端的各种终端设备，与网络接入设备交互完成用户的接入认证功能。如果采用802.1x认证，用户还需要安装客户端软件。</li>
+        <li class="li-disc">网络准入设备：网络准入设备是终端访问网络的网络控制点，是企业安全策略的实施者，负责按照客户网络制定的安全策略，实施相应的准入控制（允许、拒绝、隔离或限制）。</li>
+        <li class="li-disc">准入服务器：准入服务器包括准入控制服务器、管理服务器、病毒库服务器和补丁服务器，主要进行用户身份认证、终端安全检查、系统修复升级，终端行为监控审计等工作。 </li>
+      </ul>
+  <h5><span id="12" style="color: #008000;"><strong>1.2 NAC基本原理及三种认证方式</strong></span></h5>
+  <p>NAC功能的基本流程如图2所示。</p>
+  <div style="margin: auto; padding:3em ;width: 50%;"><img src="{% static 'img/baseline/hw-nac1-2.png' %}" alt="" ></div>
+  	<ol>
+  		<li>NAC终端接入网络时，首先通过接入设备进行用户身份认证，接入设备和安全策略服务器（例如AAA服务器）配合，完成对用户的身份认证。</li>
+  		<li>对于认证通过的用户，安全策略服务器下发授权信息给接入设备。对于认证失败的用户，接入设备对其进行隔离。</li>
+  		<li>接入设备根据安全策略服务器下发的授权信息，控制终端用户的网络访问权限，并建立终端与安全策略服务器之间通信的渠道。</li>
+      <li>NAC终端和安全策略服务器直接交互，终端上报自己的状态信息，包括病毒库版本、操作系统版本、终端上安装的补丁版本等信息。</li>
+      <li>安全策略服务器检查终端的状态信息，对于不符合企业安全标准的NAC终端，安全策略服务器重新下发授权信息给接入设备。</li>
+      <li>接入设备根据安全策略服务器下发的授权信息，修改终端用户的网络访问权限。</li>
+      <li>NAC终端根据状态检查结果，接入软件服务器进行客户端下载、系统修复、补丁/病毒库升级等处理，直到符合企业安全标准。</li>
+  	</ul>
+    <h6><strong>用户的接入模式</strong></h6>
+      <p>在NAC网络中，根据实际用户接入网络的情况可将接口下用户的接入模式划分为四种。</p>
+      <ul style="list-style-type: disc;">
+        <li class="li-disc">单用户接入（single-terminal）：设备接口下仅允许一个数据终端接入网络。</li>
+        <li class="li-disc">单用户通过语音终端接入（single-voice-with-data）：设备接口下仅有一个数据终端通过一个语音终端接入网络，设备对数据终端和语音终端进行单独认证。</li>
+        <li class="li-disc">多用户共享权限接入（multi-share）：设备接口下存在多个数据终端接入网络，设备仅对第一个上线的用户进行接入认证，后续用户将共享网络访问权限。但如果第一个上线用户下线后，其他用户也无网络访问权限。</li>
+        <li class="li-disc">多用户单独认证接入（multi-authen）：设备接口下存在多个数据终端接入网络，设备对每个用户单独进行接入认证。一个用户下线后不会影响其他用户的网络访问权限。</li>
+      </ul>
+    <h6><strong>三种认证方式比较</strong></h6>
+      <p>NAC包括三种认证方式：802.1x认证、MAC认证、Portal认证。三种认证方式的优劣比较如表1所示。</p>
+      <p">表1    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;认证方式对比</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+          <tr class="row-1 odd">
+            <td class="column-1">对比项</td>
+            <td class="column-2">802.1x认证</td>
+            <td class="column-3">MAC认证</td>
+            <td class="column-4">Portal认证</td>
+          </tr>
+          <tr class="row-2 even">
+            <td class="column-1">客户端需求</td>
+            <td class="column-2">需要</td>
+            <td class="column-3">不需要</td>
+            <td class="column-4">不需要</td>
+          </tr>
+          <tr class="row-3 even">
+            <td class="column-1">优点</td>
+            <td class="column-2">安全性高</td>
+            <td class="column-3">无需安装客户端</td>
+            <td class="column-4">部署灵活</td>
+          </tr>
+          <tr class="row-4 even">
+            <td class="column-1">缺点</td>
+            <td class="column-2">部署不灵活</td>
+            <td class="column-3">需登记MAC地址，管理复杂</td>
+            <td class="column-4">安全性不高</td>
+          </tr>
+              <tr class="row-5 even">
+            <td class="column-1">适合场景</td>
+            <td class="column-2">新建网络、用户集中、信息安全要求严格的场景</td>
+            <td class="column-3">打印机、传真机等哑终端接入认证的场景</td>
+            <td class="column-4">用户分散、用户流动性大的场景</td>
+          </tr>
+        </tbody>
+        </table>
+        <p>在NAC网络部署中，为了灵活地适应网络环境中的多种认证需求，设备支持在接入用户的接口上对802.1x认证、MAC认证、Portal认证进行同时部署。如果使能多种认证方式，那么各认证顺序的生效方式和配置先后顺序保持一致。</p>
+        <p>另一方面，在部署多种认证方式后，设备默认允许用户能够先后通过不同方式的接入认证，以实现授予用户不同的网络权限的目的。以用户先通过Portal认证后通过802.1x为例，如果Portal认证用户能够访问信息安全性较低的市场部网络，802.1x认证用户能够访问信息安全要求严格的财务部网络。</p>
+  <h5><span id="13" style="color: #008000;"><strong>1.3 802.1X认证方式</strong></span></h5>
+    <p>IEEE802 LAN/WAN委员会为解决无线局域网网络安全问题，提出了802.1x协议。后来，802.1x协议作为局域网接口的一个普通接入控制机制在以太网中被广泛应用，主要解决以太网内认证和安全方面的问题。</p>
+    <p>802.1x协议是一种基于接口的网络接入控制协议。“基于接口的网络接入控制”是指，在局域网接入设备的接口这一级，对所接入的用户设备通过认证来控制对网络资源的访问。</p>
+    <p>如图3所示，802.1x系统为典型的Client/Server结构，包括三个实体：客户端、接入设备和认证服务器。</p>
+    <div style="margin: auto; padding:3em ;width: 50%;"><img src="{% static 'img/baseline/hw-nac1-3.png' %}" alt="" ></div>
+    <ul style="list-style-type: disc;">
+      <li class="li-disc">客户端是位于局域网段一端的一个实体，由该链路另一端的接入设备对其进行认证。客户端一般为一个用户终端设备，用户可以通过启动客户端软件发起802.1x认证。客户端必须支持局域网上的可扩展认证协议EAPOL（Extensible Authentication Protocol over LAN）。</li>
+       li>接入设备是位于局域网段一端的另一个实体，对所连接的客户端进行认证。接入设备通常为支持802.1x协议的网络设备，它为客户端提供接入局域网的接口。</li>
+      <li class="li-disc">认证服务器是为接入设备提供认证服务的实体。认证服务器用于对用户进行认证、授权和计费，通常为RADIUS服务器。</li>
+    </ul>
+    <h6><strong>认证触发方式</strong></h6>
+      <p>802.1x的认证过程可以由客户端主动发起，也可以由接入设备发起。设备支持的认证触发方式包括以下两种。</p>
+      <ol>
+        <li>客户端主动触发方式：用户主动开启客户端输用户名和密码向接入设备发送EAP报文来触发认证。</li>
+        <li>接入设备主动触发方式：接入设备在接收到用户终端发送的DHCP/ARP报文后，主动触发用户终端自动弹出客户端界面，用户输入用户名和密码即可启动认证</li>
+      </ol>
+    <h6><strong>认证方式</strong></h6>
+      <p>802.1x认证系统使用可扩展认证协议EAP（Extensible Authentication Protocol）来实现客户端、接入设备和认证服务器之间认证信息的交换，各实体之间EAP协议报文的交互形式如下。</p>
+      <p>1. 在客户端与接入设备之间，EAP协议报文使用EAPOL封装格式，并直接承载于LAN环境中。</p>
+      <p>2. 在接入设备与认证服务器（以RADIUS服务器为例）之间，EAP协议报文可以使用以下两种方式进行交互。</p>
+      <ul style="list-style-type: disc;">
+        <li class="li-disc">EAP中继：EAP协议报文由接入设备进行中继，设备将EAP报文使用EAPOR（EAP over RADIUS）封装格式承载于RADIUS协议中，发送给RADIUS服务器进行认证。该认证方式的优点是：设备处理简单，可支持多种类型的EAP认证方法，例如MD5-Challenge、EAP-TLS、PEAP等，但要求RADIUS服务器端支持相应的认证方法。</li>
+        <li class="li-disc">EAP终结：EAP协议报文由接入设备进行终结，设备将客户端认证信息封装在标准RADIUS报文中，与服务器之间采用密码验证协议PAP（Password Authentication Protocol）或质询握手验证协议CHAP（Challenge Handshake Authentication Protocol）方式进行认证。该认证方式的优点是：现有的RADIUS服务器基本均可支持PAP和CHAP认证，无需升级服务器，但设备处理较为复杂，且不能支持除MD5-Challenge之外的其它EAP认证方法。</li>
+       </ul>
+    <h6><strong>认证流程</strong></h6>
+     <p>对于EAP中继方式，802.1x认证流程如图4所示。</p>
+        <div style="margin: auto; padding:3em ;width: 50%;"><img src="{% static 'img/baseline/hw-nac1-4.png' %}" alt="" ></div>
+      <ol>
+        <li>在认证之前客户端与设备之间建立起预连接。</li>
+        <li>当用户需要访问外部网络时打开802.1x客户端程序，输入已经申请、登记过的用户名和密码，发起连接请求。此时，客户端程序将向接入设备发出认证请求报文，开始启动一次认证过程。</li>
+        <li>接入设备收到认证请求报文后，向用户发出用户名请求报文，要求用户的客户端程序发送输入的用户名。</li>
+        <li>客户端程序响应接入设备发出的请求，将用户名信息发送给接入设备。</li>
+        <li>接入设备将客户端发送的用户名信息发送给认证服务器进行处理。</li>
+        <li>认证服务器收到接入设备转发的用户名信息后，按照如下方式对其密码进行验证。
+          <ol style="list-style-type: upper-roman;">
+            <li>认证服务器将用户名信息与数据库中的用户名列表进行对比，找到该用户名对应的密码信息。</li>
+            <li>认证服务器用随机生成的一个MD5 Challenge对密码进行加密处理，并将此MD5 Challenge通过接入设备发送给客户端。</li>
+            <li>客户端收到由接入设备转发的MD5 Challenge后，用该Challenge对密码部分进行加密处理，之后将加密后的密码通过接入设备发送到认证服务器。</li>
+            <li>认证服务器将收到的已加密的密码信息和本地经过加密运算后的密码信息进行对比。如果相同，则认为该用户为合法用户；如果不同，则认为该用户为非法用户。</li>
+          </ol>
+        </li>
+        <li>密码验证成功后，认证服务器向接入设备发送认证成功报文。</li>
+        <li>设备收到认证成功报文后向客户端发送认证成功报文，并将接口改为授权状态，允许用户通过接口访问网络。</li>
+        <li>客户端可以发送下线报文给接入设备，主动要求下线。</li>
+        <li>接入设备把接口状态从授权状态改变成未授权状态，并向客户端发送认证失败报文同时删除用户上线信息。</li>
+      </ol>
+      <p>EAP终结方式与EAP中继方式的认证流程相比，不同之处在于步骤5和6。对于EAP终结方式，当接入设备将客户端发送的用户名信息发送给认证服务器时，会随机生成一个MD5 Challenge并发送给客户端（MD5 Challenge由接入设备生成而非认证服务器生成）。之后接入设备会把用户名、MD5 challenge和客户端加密后的密码信息一起送给认证服务器，进行相关的认证处理。</p>
+  <h5><span id="14" style="color: #008000;"><strong>1.4 MAC认证</strong></span></h5>
+    <p>MAC认证是一种基于接口和MAC地址对用户的网络访问权限进行控制的认证方法，它不需要用户安装任何客户端软件。设备在启动了MAC认证的接口上首次检测到用户的MAC地址以后，即启动对该用户的认证操作。认证过程中，不需要用户手动输入用户名或者密码。</p>
+    <h6><strong>用户名形式</strong></h6>
+      <p>根据接入设备最终用于验证用户身份的用户名格式和内容的不同，可以将MAC认证使用的用户名格式分为三种类型：</p>
+      <ul style="list-style-type: disc;">
+        <li class="li-disc">MAC地址格式：设备使用用户的MAC地址作为用户名进行认证，同时可以使用MAC地址或者自定义的字符串作为密码。</li>
+        <li class="li-disc">固定用户名形式：不论用户的MAC地址为何值，所有用户均使用接入设备上指定的一个固定用户名和密码替代用户的MAC地址作为身份信息进行认证。由于同一个接口下可以有多个用户进行认证，因此这种情况下接口上的所有MAC认证用户均使用同一个固定用户名进行认证，服务器端仅需要配置一个用户账户即可满足所有认证用户的认证需求，这适用于客户端比较可信的网络环境。</li>
+        <li class="li-disc">DHCP选项格式：设备将获取到的用户DHCP选项字段以及一个固定的密码代替用户的MAC地址作为身份信息进行认证。该方式需保证设备支持通过DHCP报文触发MAC认证。</li>
+      </ul>
+    <h6 ><strong>认证流程</strong></h6>
+    <p>MAC认证流程如图5所示。</p>
+    <div style="margin: auto; padding:3em ;width: 50%;"><img src="{% static 'img/baseline/hw-nac1-5.png' %}" alt="" ></div>
+    <ol>
+      <li>在认证之前客户端与设备之间建立预连接。</li>
+      <li>设备在检查到用户发送的ARP/DHCP/ND/DHCPv6中的任意一种报文，即触发用户的MAC认证。</li>
+      <li>根据配置，设备将用户名和密码发送到认证服务器进行认证。</li>
+      <li>认证服务器验证接收到的用户名和密码，验证成功后向设备发送认证成功报文。设备接收到认证成功报文后将接口改为授权状态，允许用户通过接口访问网络。</li>
+    </ol>
+  <h5><span id="15" style="color: #008000;"><strong>1.5 NAC模式：统一模式与传统模式</strong></span></h5>
+    <p>NAC功能支持传统配置模式以及统一配置模式。相比传统模式，统一模式具有以下优势。
+    <ul style="list-style-type:disc;">
+      <li class="li-disc">命令行格式设计贴近用户实际使用场景，更易理解。</li>
+      <li class="li-disc">功能点设计去除了相似的概念，并且配置逻辑更加简单易懂。</li>
+    </ul>
+    </p>
+    <p>基于上述优势，建议使用统一模式部署NAC功能，V200R005C00及以后版本默认为统一模式。</p>
+    <p><strong><span style="font-size: 2em; color: red;">&#9888;</span>传统模式与统一模式相互切换后，管理员必须重启设备，新配置模式的各项功能才能生效。</strong></p>
+    <h6><strong>统一模式与传统模式配置过程比较</strong></h6>
+      <p>表2   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;常见配置场景对应关系</p>
+      <table id="tablepress-2" class="tablepress tablepress-id-2">
+      <tbody class="row-hover">
+        <tr class="row-1 odd">
+          <td class="column-1" style="width: 10%;">配置场景</td>
+          <td class="column-2" style="width: 30%;">统一模式配置方式</td>
+          <td class="column-3" style="width: 30%;">传统模式配置方式</td>
+        </tr>
+        <tr class="row-2 even">
+          <td class="column-1">802.1x用户在认证成功之前或认证服务器DOWN时，需要访问一定的网络访问权限。</td>
+          <td class="column-2">1. 使能802.1x认证。具体请参见使能NAC认证。<br>2. 配置用户认证成功之前或认证服务器DOWN时，能够访问一定的网络资源</td>
+          <td class="column-3">1. 使能802.1x认证。具体请参见使能NAC认证。<br>2. 配置用户认证成功之前或认证服务器DOWN时，能够访问一定的网络资源</td></td>
+        </tr>
+        <tr class="row-3 even">
+          <td class="column-1">802.1x认证网络中存在无法安装和使用802.1x客户端的哑终端</td>
+          <td class="column-2">同时使能802.1x认证与MAC认证。</td>
+          <td class="column-3">1. 使能802.1x认证。<br>2. 使能MAC旁路认证功能。</td>
+        </tr>
+      </tbody>
+      </table>
+      <p>表3   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;常用命令对应关系</p>
+      <table id="tablepress-2" class="tablepress tablepress-id-2">
+      <tbody class="row-hover">
+        <tr class="row-1 odd">
+          <td class="column-1" style="width: 10%;">命令功能</td>
+          <td class="column-2" style="width: 30%;">统一模式配置方式</td>
+          <td class="column-3" style="width: 30%;">传统模式配置方式</td>
+        </tr>
+        <tr class="row-2 even">
+          <td class="column-1">使能认证相关命令</td>
+          <td class="column-2"><ul style="list-style-type: disc;"><li class="li-disc">authentication</li>
+            <li class="li-disc">authentication single-access</li></ul></td>
+          <td class="column-3">
+            <ul style="list-style-type: disc;">
+              <li class="li-disc">dot1x enable</li>
+              <li class="li-disc">dot1x mac-bypass</li>
+              <li class="li-disc">dot1x port-control</li>
+              <li class="li-disc">mac-authen</li>
+              <li class="li-disc">portal local-server enable</li>
+            </ul>
+          </td>
+        </tr>
+        <tr class="row-3 even">
+          <td class="column-1" >用户在认证成功之前，获取网络访问权限相关命令</td>
+          <td class="column-2" >
+            <ul style="list-style-type: disc;">
+              <li class="li-disc">authentication event action authorize</li>
+            </ul>
+          </td>
+          <td class="column-3" >
+            <ul style="list-style-type: disc;">
+              <li class="li-disc">authentication guest-vlan</li>
+              <li class="li-disc">authentication critical-vlan</li>
+              <li class="li-disc">authentication restrict-vlan</li>
+              <li class="li-disc">authentication event</li>
+              <li class="li-disc">authentication open</li>
+            </ul>
+          </td>
+        </tr>
+        <tr class="row-4 even">
+          <td class="column-1">配置准入模式</td>
+          <td class="column-2">
+            <ul style="list-style-type: disc;">
+              <li class="li-disc">aauthentication mode</li>
+            </ul>
+          </td>
+          <td class="column-3">
+            <ul style="list-style-type: disc;">
+              <li class="li-disc">dot1x port-method</li>
+              <li class="li-disc">dot1x max-user</li>
+              <li class="li-disc">mac-authen max-user</li>
+              <li class="li-disc">portal max-user</li>
+            </ul>
+          </td>    
+        </tr>
+        <tr class="row-5 even">
+          <td class="column-1">对用户进行分组授权</td>
+          <td class="column-2">
+            <ul style="list-style-type: disc;">
+              <li class="li-disc">service-scheme（AAA视图）</li>
+              <li class="li-disc">ucl-group（业务方案视图）</li>
+              <li class="li-disc">user-vlan（业务方案视图）</li>
+              <li class="li-disc">voice-vlan（业务方案视图）</li>
+              <li class="li-disc">qos-profile（业务方案视图）</li>
+            </ul>
+          </td>
+          <td class="column-3">
+            <ul style="list-style-type: disc;">
+              <li class="li-disc">user-group</li>
+              <li class="li-disc">acl-id（用户组视图）</li>
+              <li class="li-disc">user-vlan</li>
+              <li class="li-disc">remark</li>
+              <li class="li-disc">car（用户组视图）</li>
+            </ul>
+          </td>    
+        </tr>
+        <tr class="row-6 even">
+          <td class="column-1">认证触发报文</td>
+          <td class="column-2">
+            <ul style="list-style-type: disc;">
+              <li class="li-disc">authentication trigger-condition（802.1x认证）</li>
+              <li class="li-disc">authentication trigger-condition（MAC认证）</li>
+            </ul>
+          </td>
+          <td class="column-3">
+            <ul style="list-style-type: disc;">
+              <li class="li-disc">dot1x dhcp-trigger</li>
+              <li class="li-disc">mac-authen trigger</li>
+            </ul>
+          </td>    
+        </tr>
+      </tbody>
+      </table>
+    <h6><strong>统一模式与传统模式独有命令速查表</strong></h6>
+      <p>设备由统一模式切换为传统模式时，仅统一模式支持的命令将被屏蔽，反之亦然。如表2-12所示，管理员在切换NAC配置模式时，能够根据其快速了解模式切换后被屏蔽的命令。</p>
+      <p>表4   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;统一模式与传统模式独有命令速查表</p>
+      <table id="tablepress-1" class="tablepress tablepress-id-1">
+      <tbody class="row-hover">
+        <tr class="row-1 odd">
+          <td class="column-1">统一模式</td>
+          <td class="column-2">传统模式</td>
+        </tr>
+        <tr class="row-2 even">
+          <td class="column-1">
+            <ul style="list-style-type: disc;">
+              <li class="li-disc">authentication handshake</li>
+              <li class="li-disc">authentication event action authorize</li>
+              <li class="li-disc">authentication timer handshake-period</li>
+              <li class="li-disc">authentication timer authen-fail-user-aging</li>
+              <li class="li-disc">authentication timer pre-authen-user-aging</li>
+              <li class="li-disc">authentication timer re-authen</li>
+              <li class="li-disc">authentication free-rule</li>
+              <li class="li-disc">authentication mode</li>
+              <li class="li-disc">authentication</li>
+              <li class="li-disc">authentication single-access</li>
+              <li class="li-disc">authentication trigger-condition dhcp dhcp-option</li>
+              <li class="li-disc">authentication trigger-condition（802.1x认证）</li>
+              <li class="li-disc">authentication trigger-condition（MAC认证）</li>
+              <li class="li-disc">cut access-user</li>
+              <li class="li-disc">display access-user access-type { dot1x | mac-authen | portal | none | static }</li>
+              <li class="li-disc">display access-user event { pre-authen | authen-fail | authen-server-down | client-no-response | portal-server-down }</li>
+              <li class="li-disc">display access-user service-scheme service-scheme</li>
+              <li class="li-disc">display access-user ssid ssid-name</li>
+              <li class="li-disc">display access-user ucl-group { group-index | name ucl-group-name } [ detail ]</li>
+              <li class="li-disc">display authentication free-rule</li>
+              <li class="li-disc">display authentication</li>
+              <li class="li-disc">display ucl-group all</li>
+              <li class="li-disc">domain force</li>
+              <li class="li-disc">domain（接口视图</li>
+              <li class="li-disc">qos-profile（业务方案视图）</li>
+              <li class="li-disc">ucl-group</li>
+              <li class="li-disc">ucl-group（业务方案视图）</li>
+              <li class="li-disc">user-vlan（业务方案视图）</li>
+              <li class="li-disc">voice-vlan（业务方案视图）</li>
+            </ul>
+          </td>
+          <td class="column-2">
+            <ul style="list-style-type: disc;">
+              <li class="li-disc">acl-id（用户组视图）</li>
+              <li class="li-disc">authentication critical eapol-success</li>
+              <li class="li-disc">authentication critical-vlan</li>
+              <li class="li-disc">authentication event</li>
+              <li class="li-disc">authentication event response-fail</li>
+              <li class="li-disc">authentication event session-timeout</li>
+              <li class="li-disc">authentication guest-vlan</li>
+              <li class="li-disc">authentication max-reauth-req</li>
+              <li class="li-disc">authentication open</li>
+              <li class="li-disc">authentication restrict-vlan</li>
+              <li class="li-disc">car（用户组视图）</li>
+              <li class="li-disc">cut access-user user-group group-name</li>
+              <li class="li-disc">display port connection-type access all</li>
+              <li class="li-disc">display portal free-rule</li>
+              <li class="li-disc">display user-group</li>
+              <li class="li-disc">dot1x enable</li>
+              <li class="li-disc">dot1x free-ip</li>
+              <li class="li-disc">dot1x mac-bypass</li>
+              <li class="li-disc">dot1x mac-bypass access-port</li>
+              <li class="li-disc">dot1x mac-bypass mac-auth-first</li>
+              <li class="li-disc">dot1x max-user</li>
+              <li class="li-disc">dot1x port-control</li>
+              <li class="li-disc">dot1x port-method</li>
+              <li class="li-disc">dot1x timer { arp-detect arp-detect-value | mac-bypass-delay delay-time-value | free-ip-timeout free-ip-time-value }</li>
+              <li class="li-disc">mac-authen</li>
+              <li class="li-disc">mac-authen trigger</li>
+              <li class="li-disc">mac-authen dhcp-trigger dhcp-option</li>
+              <li class="li-disc">mac-authen domain</li>
+              <li class="li-disc">mac-authen max-user</li>
+              <li class="li-disc">mac-authen timer { guest-vlan reauthenticate-period interval | offline-detect offline-detect-value }</li>
+              <li class="li-disc">port connection-type access</li>
+              <li class="li-disc">portal domain</li>
+              <li class="li-disc">portal free-rule</li>
+              <li class="li-disc">portal local-server enable</li>
+              <li class="li-disc">remark</li>
+              <li class="li-disc">server-detect action permit-all</li>
+              <li class="li-disc">user-group</li>
+              <li class="li-disc">user-group enable</li>
+              <li class="li-disc">user-vlan</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+      </table>
+    
+</div>
+{% include 'backtotop.html'%}
+</body>
+</html>
+

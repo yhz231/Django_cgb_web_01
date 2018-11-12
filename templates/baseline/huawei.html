@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<link href="{%static "css/adstyle.css" %}" rel="stylesheet" type="text/css" />
+{% include "header.html" %}
+<style>
+    body{
+        background-color: #F2F2F2;
+        margin-left: 220px;
+        margin-top: 60px;
+        padding: 20px;
+    }
+</style>
+<body>
+{% include 'baseline/baseline-menu.html' %}
+<div class="content" align="left">
+    <h5><span style="color: #008000;"><strong>华为设备软件类型</strong></span></h5>
+        <p>分行目前使用的设备型号及软件类型：</p>
+        <p>表1-1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 华为设备型号及软件类型</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1" style="width: 25%">命令行版本</td>
+                <td class="column-2" style="width: 25%">设备型号</td>
+                <td class="column-3" style="width: 25%">软件说明</td>
+                <td class="column-4" style="width: 25%">在用设备</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">8版本</td>
+                <td class="column-2">NE系列路由器<br>CE系列交换机</td>
+                <td class="column-3">主要用于数据中心，分行核心设备</td>
+                <td class="column-4">NE20</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1">7版本</td>
+                <td class="column-2">AR系列路由器<br>S系列交换机<br></td>
+                <td class="column-3">用于分行设备非核心设备</td>
+                <td class="column-4">
+                    AR3000 AR1200 AR2200 <br>
+                    S7700 S5700 S2700
+            </td>
+            </tr>
+        </tbody>
+        </table>
+
+</div>
+
+</body>
+</html>

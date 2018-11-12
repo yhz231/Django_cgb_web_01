@@ -1,0 +1,70 @@
+{% load staticfiles %}
+<meta charset="utf-8" />
+<!-- 通用样式 -->
+<link rel="stylesheet" type="text/css" href="{% static "css/public.css" %}">
+<!-- 动态菜单CSS -->
+<link rel="stylesheet" type="text/css" href="{% static "css/menu.css" %}">
+<!-- jquery引入 -->
+<script src="{% static "js/jquery.min.js" %}"></script>
+<!-- 动态菜单JS -->
+<script type="text/javascript" src="{% static "js/menu.js" %}"></script>
+<div class="middle">
+    <div class="leftMenu">
+        <div class="topMenu">
+            <img class="banshi" src="{% static "img/banshidating.png" %}"/>
+            <p class="menuTitle">网络组微服务</p>
+        </div>
+        <div class="menu_list">
+            <ul>
+                <li class="">
+                    <p class="fuMenu"><a href="/cmdb/baseline/">分行基线配置模版</a></p>
+                </li>
+                <li class="">
+                    <p class="fuMenu">思科设备</p>
+                    <img class="xiala" src="{% static "img/xiala.png" %}" />
+                    <div class="div1">
+                        <p class="zcd" id="zcd8"><a href="/cmdb/baseline/cisco/">思科模版说明</a></p>
+                        <p class="zcd" id="zcd9"><a href="/cmdb/baseline/cisco/cisco-swios">交换机IOS配置模版</a></p>
+                        <p class="zcd" id="zcd10"><a href="/cmdb/baseline/cisco/cisco-rios">路由器IOS配置模版</a></p>
+                        <p class="zcd" id="zcd11"><a href="/cmdb/baseline/cisco/cisco-riosxe">路由器IOS-XE配置模版</a></p>
+                        <p class="zcd" id="zcd12"><a href="/cmdb/baseline/cisco/cisco-asa">防火墙ASA配置模版</a></p>
+                    </div>
+                </li>
+                <li class="">
+                    <p class="fuMenu">华为设备</p>
+                    <img class="xiala" src="{% static "img/xiala.png" %}" />
+                    <div class="div1">
+                        <p class="zcd" id="zcd20"><a href="/cmdb/baseline/huawei/">华为模版说明</a></p>
+                        <p class="zcd" id="zcd21"><a href="/cmdb/baseline/huawei/hw-swce">CE系列交换机配置模版</a></p>
+                        <p class="zcd" id="zcd22"><a href="/cmdb/baseline/huawei/hw-sws">S系列交换机配置模版</a></p>
+                        <p class="zcd" id="zcd23"><a href="/cmdb/baseline/huawei/hw-rne">NE系列路由器配置模版</a></p>
+                        <p class="zcd" id="zcd24"><a href="/cmdb/baseline/huawei/hw-rar">AR系列路由器配置模版</a></p>
+                    </div>
+                </li>
+                <li class="">
+                    <p class="fuMenu">华三设备</p>
+                    <img class="xiala" src="{% static "img/xiala.png" %}" />
+                    <div class="div1">
+                        <p class="zcd" id="zcd30"><a href="/cmdb/baseline/h3c/">华三模版说明</a></p>
+                        <p class="zcd" id="zcd31"><a href="/cmdb/baseline/h3c/h3c-swv5">ComwareV5交换机配置模版</a></p>
+                        <p class="zcd" id="zcd32"><a href="/cmdb/baseline/h3c/h3c-swv7">ComwareV7交换机配置模版</a></p>
+                        <p class="zcd" id="zcd33"><a href="/cmdb/baseline/h3c/h3c-rv7">ComwareV7路由器配置模版</a></p>
+                    </div>
+                </li>
+                <li class="">
+                    <p class="fuMenu">迈普设备</p>
+                    <img class="xiala" src="{% static "img/xiala.png" %}" />
+                    <div class="div1">
+                        <p class="zcd" id="zcd40"><a href="/cmdb/baseline/maipu/">迈普模版说明</a></p>
+                        <p class="zcd" id="zcd41"><a href="/cmdb/baseline/maipu/mp-sw20">20型号交换机</a></p>
+                        <p class="zcd" id="zcd42"><a href="/cmdb/baseline/maipu/mp-sw00">00型号交换机</a></p>
+                        <p class="zcd" id="zcd43"><a href="/cmdb/baseline/maipu/mp-r">路由器</a></p>
+                    </div>
+                </li>
+                <li class="">
+                    <p class="fuMenu"><a href="/cmdb/baseline/download/">下载与资料</a></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
