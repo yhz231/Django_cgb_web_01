@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<link href="{%static "css/adstyle.css" %}" rel="stylesheet" type="text/css" />
+{% include "header.html" %}
+<style>
+    body{
+        background-color: #F2F2F2;
+        margin-left: 220px;
+        margin-top: 60px;
+        padding: 20px;
+    }
+</style>
+<body>
+{% include 'baseline/baseline-menu.html' %}
+<div class="content" align="left">
+    <h1 class="head_h1">思科路由器IOS基线配置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     {% include 'downloadico.html' %}
+	</h1>
+    <p><span style="color: #800080;"><strong>内容简述：</strong></span></p>
+    <p>介绍了思科路由器-IOS的配置模版的内容以及相关的配置说明</p>
+    <blockquote><p>
+        思科IOS软件系统存在众多的软件版本，不同软件版本间可能存在命令上的差异，需各分行根据实际修改对应命令
+    </p></blockquote>
+    <div id="toc_container" class="toc_light_blue no_bullets";">
+        <p class="toc_title">目录结构</p>
+        <ul class="toc_list">
+            <li><a href="#11">1.1 设备命名配置</a></li>
+            <li><a href="#12">1.2 优化默认服务</a></li>
+            <li><a href="#13">1.3 AAA配置</a></li>
+            <li><a href="#14">1.4 SSH登陆配置</a></li>
+            <li><a href="#15">1.5 SNMP配置</a></li>
+            <li><a href="#16">1.6 LOG日志配置</a></li>
+            <li><a href="#17">1.7 NTP配置</a></li>
+            <li><a href="#18">1.8 路由器端口配置</a></li>
+        </ul>
+    </div>
+    <h5><span id="11"><span style="color: #008000;"><strong>1.1 设备命名配置</strong></span></span></h5>
+        <p>设备命名需采用以下统一命名规则：</p>
+        <h4 class="well">AA-BB-CC-DD-EE<br></h4>
+        <blockquote><ul style="list-style-type:disc;">
+            <li>AA: 分行标识</li>
+            <li>BB: 功能区域代码</li>
+            <li>CC: 设备类型代码</li>
+            <li>DD: 机柜位置信息(可选)</li>
+            <li>EE: 设备编码</li>
+        </ul></blockquote>
+        <p>设备命名配置：</p>
+        <pre>hostname XXFH-WN-AR-01</pre>
+    <h5><span id="12"><span style="color: #008000;"><strong>1.2 优化默认服务</strong></span></span></h5>
+        <p>思科路由器默认启用的部分安全服务，对于内网环境存在隐患，可以考虑关闭</p>
+        <p">表1-1    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;建议关闭服务</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">no service finger</td>
+                <td class="column-2">用户可以通过service finger获取目标设备的信息tcp/udp 79端口，存在安全隐患，需要关闭</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1">no service pad</td>
+                <td class="column-2">PAD(Packet assembler/Disassembly)，用来启用路由器和其它网络设备间的x.25连接，如果不需要x.25连接，需要关闭。</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1">no service tcp-small-servers</td>
+                <td class="column-2">可以用来打开以下服务：echo,discard,chargen和daytime，容易引起fraggle攻击，需要关闭</td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1">no service udp-small-servers</td>
+                <td class="column-2">可以用来打开以下服务：echo,discard,chargen和daytime，容易引起fraggle攻击，需要关闭</td>
+            </tr>
+            <tr class="row-6 even">
+                <td class="column-1">no service dhcp</td>
+                <td class="column-2">禁用设备DHCP服务器和代理功能</td>
+            </tr>
+            <tr class="row-7 odd">
+                <td class="column-1">no ip source-route</td>
+                <td class="column-2">允许IP报文的发送者控制报文到达最终目的地的路径，建议关闭</td>
+            </tr>
+            <tr class="row-8 even">
+                <td class="column-1">no ip finger</td>
+                <td class="column-2">用户可以通过service finger获取目标设备的信息tcp/udp 79端口，存在安全隐患，需要关闭</td>
+            </tr>
+            <tr class="row-9 odd">
+                <td class="column-1">no ip identd</td>
+                <td class="column-2">允许远程设备为了识别目的查询一个TCP端口（TCP 113）,目的设备用其身份信息作为响应，是一个不安全协议，需要关闭。</td>
+            </tr>
+            <tr class="row-10 even">
+                <td class="column-1">no ip domain-lookup</td>
+                <td class="column-2">对于命令中的命名进行域名解析，建议关闭</td>
+            </tr>
+            <tr class="row-11 odd">
+                <td class="column-1">no ip https server</td>
+                <td class="column-2">路由器不建议使用https进行管理，建议关闭/td>
+            </tr>
+            <tr class="row-12 even">
+                <td class="column-1">no ip https secure-server</td>
+                <td class="column-2">路由器不建议使用httpss进行管理，建议关闭</td>
+            </tr>
+            <tr class="row-13 odd">
+                <td class="column-1">no ip bootp server</td>
+                <td class="column-2">bootp(bootstrap protocol),通过网络向其它路由器提供操作系统IOS服务，需要关闭</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>建议启用思科路由器部分服务如下：</p>
+        <p>表1-2  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;建议开启服务</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">service nagle</td>
+                <td class="column-2">Nagle算法用来减少小型数据传输的网络拥塞算法</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1">service tcp-keepalives-in</td>
+                <td class="column-2">监控进入设备TCP连接，如果没收到远程系统响应自动关闭连接，减少设备负担</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1">service tcp-keepalives-out</td>
+                <td class="column-2">监控设备输出TCP连接，如果没收到远程系统响应自动关闭连接，减少设备负担</td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1">service timestamps debug datetime localtime show-timezone msec</td>
+                <td class="column-2">debug日志时间元素定义</td>
+            </tr>
+            <tr class="row-6 even">
+                <td class="column-1">service timestamps log datetime localtime show-timezone msec</td>
+                <td class="column-2">log日志时间元素定义</td>
+            </tr>
+            <tr class="row-7 odd">
+                <td class="column-1">service password-encryption</td>
+                <td class="column-2">开启配置密码明文加密</td>
+            </tr>
+            <tr class="row-8 even">
+                <td class="column-1">service sequence-numbers</td>
+                <td class="column-2">日志文件中插入序列号 ，使用后如 <span style="color: red;">000085</span>: *Nov 17 2017 22:48:57 GMT: %SPA_OIR-6-OFFLINECARD: SPA (SPA-1X10GE-WL-V2) offline in subslot 0/1</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>优化默认服务配置命令如下：</p>
+<pre class="preheigh">no service finger <br>
+no service pad<br>
+no service tcp-small-servers<br>
+no service udp-small-servers<br>
+no service dhcp<br>
+no ip source-route<br>
+no ip finger<br>
+no ip domain-lookup<br>
+no ip https server<br>
+!<br>
+service nagle<br>
+service tcp-keepalives-in<br>
+service tcp-keepalives-out<br>
+service timestamps debug datetime localtime show-timezone msec<br>
+service timestamps log datetime localtime show-timezone msec<br>
+service password-encryption<br>
+service sequence-numbers<br>
+</pre>
+    <h5><span id="13"><span style="color: #008000;"><strong>1.3 AAA配置</strong></span></span></h5>
+        <p>AAA ，认证(Authentication)：验证用户的身份与可使用的网络服务；授权(Authorization)：依据认证结果开放网络服务给用户；计帐(Accounting)：记录用户对各种网络服务的用量，并提供给计费系统。整个系统在网络管理与安全问题中十分有效。常用的AAA协议是Radius（RFC 2865，RFC 2866），TACACS（RFC1492），思科设备AAA认证主要用到的是TACACA协议。</p>
+        <blockquote><p>
+            分行核心设备指向总行3A服务器，其他设备指向分行的3A服务器。
+        </p></blockquote>
+        <p>AAA服务部分配置说明：</p>
+        <p>表1-3  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AAA服务配置</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">aaa group server tacacs+ 3a</td>
+                <td class="column-2">建立tacacs服务器组，并命名为3a</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1">server 21.14.0.122</td>
+                <td class="column-2">总行主认证服务器地址21.14.0.122</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1">server 21.14.0.123 </td>
+                <td class="column-2">总行备认证服务器地址21.14.0.123</td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1">ip tacacs source-interface Loopback0</td>
+                <td class="column-2">指定3A认证发起的端口，此端口IP须与3A服务器上一致</td>
+            </tr>
+            <tr class="row-6 even">
+                <td class="column-1">tacacs-server host 21.14.0.122 key {{ FH3A_KEY }}</td>
+                <td class="column-2">总行3a认证密钥为 {{ FH3A_KEY }}</td>
+            </tr>
+            <tr class="row-7 odd">
+                <td class="column-1">tacacs-server host 21.14.0.123 key {{ FH3A_KEY }}</td>
+                <td class="column-2">总行3a认证密钥为 {{ FH3A_KEY }}</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>AAA服务配置命令如下：</p>
+<pre class="preheigh">aaa new-model <br>
+aaa group server tacacs+ 3a<br>
+ server <i>&lt;3a认证主服务器&gt;</i> <br>
+ server <i>&lt;3a认证备服务器&gt;</i> <br>
+ ip tacacs source-interface Loopback0<br>
+!<br>
+tacacs-server host <i>&lt;3a认证主服务器&gt;</i> key <i>&lt;3a认证密钥&gt;</i><br>
+tacacs-server host <i>&lt;3a认证备服务器&gt;</i> key <i>&lt;3a认证密钥&gt;</i><br>
+!<br>
+aaa authentication login VTY_AUTHEN group 3a local<br>
+aaa authentication login LOCAL_AUTHEN local<br>
+aaa authentication enable default group 3a enable<br>
+! <br>
+aaa authorization console<br>
+aaa authorization exec VTY_EXEC_AUTHOR group 3a local <br>
+aaa authorization exec LOCAL_EXEC_AUTHOR local <br>
+aaa authorization commands 15 VTY_COMM_AUTHOR group 3a local <br>
+aaa authorization commands 15 LOCAL_COMM_AUTHOR local <br>
+!<br>
+aaa accounting exec default start-stop group 3a<br>
+aaa accounting commands 15 default start-stop group 3a<br>
+aaa accounting system default start-stop group 3a<br>
+
+</pre>
+    <h5><span id="14"><span style="color: #008000;"><strong>1.4 SSH登陆配置</strong></span></span></h5>
+        <p>SSH是一种协议标准，其目的是实现安全远程登录以及其它安全网络服务。目前要求所有命令行登陆的设备均需使用SSH协议。</p>
+        <p>SSH部分配置说明：</p>
+        <p>表1-4  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SSH配置</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">username <i><本地用户></i> privilege 15 secret 5 <i><本地密码></i></td>
+                <td class="column-2">指定本地用户名密码，分行用户名规范“分行简称”，如北京分行用户名为 BJFH</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1">enable secret 5 <i>&lt;enable密码&gt;</i></td>
+                <td class="column-2">使用加密分式指定enable密码</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1">ip ssh version 2</td>
+                <td class="column-2">指定SSH版本为V2</td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1">ip domain name cgbchina.com.cn</td>
+                <td class="column-2">指定设备域名为cgbchia.com.cn</td>
+            </tr>
+            <tr class="row-6 even">
+                <td class="column-1">crypto key generate rsa general-keys modulus 2048 </td>
+                <td class="column-2">为加密会话生成密钥，要求RSA长度为2048</td>
+            </tr>
+            <tr class="row-7 odd">
+                <td class="column-1">ip access-list extended VTY_ACL </td>
+                <td class="column-2">分行核心设备允许下列总行地址登陆，其他非核心设备仅需允许总行网管地址登陆</td>
+            </tr>
+            <tr class="row-8 even">
+                <td class="column-1"> permit tcp host 21.4.0.88 any</td>
+                <td class="column-2">总行跳板机服务器IP</td>
+            </tr>
+            <tr class="row-9 odd">
+                <td class="column-1"> permit tcp host 21.15.255.1 any</td>
+                <td class="column-2">总行核心交换机IP,作为跳板机服务器的备份</td>
+            </tr>
+            <tr class="row-10 even">
+                <td class="column-1">  permit tcp host 21.15.255.2 any</td>
+                <td class="column-2">总行核心交换机IP,作为跳板机服务器的备份</td>
+            </tr>
+            <tr class="row-11 odd">
+                <td class="column-1"> permit tcp host 10.2.95.211 any </td>
+                <td class="column-2">总行网管地址</td>
+            </tr>
+            <tr class="row-12 even">
+                <td class="column-1">  permit tcp 21.14.0.0 0.0.0.255 any </td>
+                <td class="column-2">总行网管地址</td>
+            </tr>
+            <tr class="row-13 odd">
+                <td class="column-1">permit tcp <i><分行源地址></i>  any</td>
+                <td class="column-2">分行地址请管理员自行添加，但源不允许为any</td>
+            </tr>
+        </tbody>
+        </table>
+        <blockquote><p>
+            部分型号较老的设备可能不支持2048位长度的密钥，则按能支持的最大长度密钥进行配置。
+        </p></blockquote>
+        <p>SSH登陆配置命令如下：</p>
+<pre>
+username <i><本地用户></i> privilege 15 secret 5 <i><本地密码></i>
+enable secret 5 <i>&lt;enable密码&gt;</i>
+！
+ip ssh version 2
+ip domain name cgbchina.com.cn
+crypto key generate rsa general-keys modulus 2048
+!
+ip access-list extended VTY_ACL             
+ permit tcp host 21.4.0.88 any
+ permit tcp host 21.15.255.1 any
+ permit tcp host 21.15.255.2 any
+ permit tcp host 10.2.95.211 any          
+ permit tcp 21.14.0.0 0.0.0.255 any      
+ !
+line con 0
+ authorization commands 15 LOCAL_COMM_AUTHOR
+ authorization exec LOCAL_EXEC_AUTHOR
+ exec-timeout 5 0
+ logging synchronous
+ login authentication LOCAL_AUTHEN
+!
+line vty 0 4
+ access-class VTY_ACL in
+ exec-timeout 5 0
+ authorization commands 15 VTY_COMM_AUTHOR
+ authorization exec VTY_EXEC_AUTHOR
+ logging synchronous
+ login authentication VTY_AUTHEN
+ transport input ssh
+ !
+line vty 5 15
+ access-class VTY_ACL in
+ exec-timeout 5 0
+ authorization commands 15 VTY_COMM_AUTHOR
+ authorization exec VTY_EXEC_AUTHOR
+ logging synchronous
+ login authentication VTY_AUTHEN
+ transport input ssh
+!
+</pre>
+    <h5><span id="15"><span style="color: #008000;"><strong>1.5 SNMP配置</strong></span></span></h5>
+        <p>SNMP(Simple Network Management Protocol)是一种简单网络管理协议，它属于TCP/IP五层协议中的应用层协议，用于网络管理的协议。SNMP主要用于网络设备的管理。由于SNMP协议简单可靠 ，受到了众多厂商的欢迎，成为了目前最为广泛的网管协议。</p>
+        <p>SNMP的工作方式：管理员需要向设备获取数据，所以SNMP提供了【RO】操作；管理员需要向设备执行设置操作，所以SNMP提供了【RW】操作；设备需要在重要状况改变的时候，向管理员通报事件的发生，所以SNMP提供了【Trap】操作。</p>
+        <p>SNNP部分配置说明：</p>
+        <p>表1-5  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SNMP配置</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">ip access-list standard newwg</td>
+                <td class="column-2">定义允许的SNMP服务器范围</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1"> permit 10.2.95.211</td>
+                <td class="column-2">总行网管地址</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1"> permit 21.14.0.0 0.0.0.255</td>
+                <td class="column-2">总行网管地址</td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1"> snmp-server ifindex persist   </td>
+                <td class="column-2">启用ifindex 持续化（接口名）。保证ifindex值在设备重启后也有效。</td>
+            </tr>
+            <tr class="row-6 even">
+                <td class="column-1"> snmp-server community zxcv1234 RO newwg</td>
+                <td class="column-2">指定SNMP的community字符，对设备的只读权限及允许访问列表</td>
+            </tr>
+            <tr class="row-7 odd">
+                <td class="column-1"> snmp-server source-interface Loopback0 </td>
+                <td class="column-2">指定snmp-server源端口</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>SNMP配置命令如下：</p>
+<pre>
+ip access-list standard newwg
+ permit 10.2.95.211
+ permit 21.14.0.0 0.0.0.255
+！
+snmp-server ifindex persist      
+snmp-server community zxcv1234 RO newwg
+snmp-server source-interface Loopback0    
+</pre>
+    <h5><span id="16"><span style="color: #008000;"><strong>1.6 LOG日志配置</strong></span></span></h5>
+    <p>我行日志记录标准是syslog（RFC5424）。 syslog标准使专用的标准化子系统能够生成，过滤，记录和分析日志消息。</p>
+    <p>LOG部分配置说明：</p>
+    <p>表1-6  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LOG配置</p>
+    <table id="tablepress-1" class="tablepress tablepress-id-1">
+    <tbody class="row-hover">
+        <tr class="row-1 odd">
+            <td class="column-1">配置命令</td>
+            <td class="column-2">作用</td>
+        </tr>
+        <tr class="row-2 even">
+            <td class="column-1">no logging console</td>
+            <td class="column-2">关闭console口日志提示信息</td>
+        </tr>
+        <tr class="row-3 odd">
+            <td class="column-1"> logging trap warnings</td>
+            <td class="column-2">指定发送日志的级别为warnings以上</td>
+        </tr>
+        <tr class="row-4 even">
+            <td class="column-1"> logging <i><日志服务器IP></i></td>
+            <td class="column-2">一级分行核心设备syslog指向<span style="color: red;">21.14.0.41</span>，其他设备指向<span style="color: red;">21.14.0.48</span>，防火墙指向<span style="color: red;">21.14.0.47</span></td>
+        </tr>
+    </tbody>
+    </table>
+    <p>LOG配置命令如下：</p>
+<pre>
+no logging console
+logging source-interface Loopback0 
+logging trap warnings
+logging <i><日志服务器IP></i>  
+</pre>
+    <h5><span id="17"><span style="color: #008000;"><strong>1.7 NTP配置</strong></span></span></h5>
+        <p>NTP服务器【Network Time Protocol（NTP）】是用来使计算机时间同步化的一种协议，它可以使计算机对其服务器或时钟源（如石英钟，GPS等等)做同步化，它可以提供高精准度的时间校正（LAN上与标准间差小于1毫秒，WAN上几十毫秒），且可介由加密确认的方式来防止恶毒的协议攻击。</p>
+        <blockquote>
+            <ul>NTP配置原则：
+                <li>一级分行核心设备指向总行NTP;</li>
+                <li>一级分行非核心设备指向分行核心;</li>
+                <li>二级分行核心设备指向一级分行核心;</li>
+                <li>二级分行其他设备指向二级分行核心。</li>
+        </ul>
+        </blockquote>
+        <p>NTP部分配置说明：</p>
+        <p>表1-7  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NTP配置</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">clock timezone GMT 8</td>
+                <td class="column-2">指定时区为东8区</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1"> ntp authentication-key 1 md5 <i>&lt;ntp密钥&gt;</i></td>
+                <td class="column-2">核心设备必须配置MD5，总行NTP服务器密钥 {{ NTP_KEY }}</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1"> ntp server <i>&lt;ntp服务器地址&gt;</i> key 1 prefer </i></td>
+                <td class="column-2">总行主NTP地址21.14.0.100</td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1"> ntp server <i>&lt;ntp服务器地址&gt;</i> key 1 </td>
+                <td class="column-2">总行主NTP地址21.14.0.101</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>NTP配置命令如下：</p>
+<pre>
+clock timezone GMT 8
+ntp authentication-key 1 md5 <i>&lt;ntp密钥&gt;</i>
+ntp authenticate
+ntp trusted-key 1
+ntp source Loopback0
+ntp update-calendar
+ntp server <i>&lt;ntp服务器地址&gt;</i> key 1 prefer 
+ntp server <i>&lt;ntp服务器地址&gt;</i> key 1
+</pre>
+    <h5><span id="18"><span style="color: #008000;"><strong>1.8 路由器端口配置</strong></span></span></h5>
+    <p>路由器未使用端口要求关闭，端口下要求标明互联对端的详细信息。</p>
+    <blockquote><p>
+        对端设备信息描述查模版“设备名称+端口号”，如：GZNB-COCS-1044265-CS01-Eth1/9
+    </p></blockquote>
+    <p>路由器端口配置命令如下：</p>
+<pre>
+interface gX/X
+shutdown
+!
+interface gX/X
+ description Connect to <i><对端设备描述></i>
+</pre>
+
+</div>
+{% include 'backtotop.html'%}
+</body>
+</html>

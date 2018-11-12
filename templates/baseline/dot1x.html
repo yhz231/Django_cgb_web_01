@@ -1,0 +1,218 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<link href="{%static "css/adstyle.css" %}" rel="stylesheet" type="text/css" />
+{% include "header.html" %}
+<style>
+    body{
+        background-color: #F2F2F2;
+        margin-left: 220px;
+        margin-top: 60px;
+        padding: 20px;
+    }
+</style>
+<body>
+{% include 'baseline/baseline-menu.html' %}
+<div class="content" align="left">
+  <div><h1 class="head_h1">802.1x技术介绍</h1></div>
+  <div id="toc_container" class="toc_light_blue no_bullets";">
+  	<p class="toc_title">目录结构</p>
+  	<ul class="toc_list">
+  		<li><a href="#11">1.1 802.1X</a></li>
+  		<li><a href="#12">1.2 802.1X的体系结构</a></li>
+  		<li><a href="#13">1.3 802.1X的认证方式</a></li>
+  		<li><a href="#14">1.4 802.1X的基本概念</a></li>
+  		<li><a href="#15">1.5 EAPOL消息的封装</a></li>
+  		<li><a href="#16">1.6 EAP属性的封装</a></li>
+  		<li><a href="#17">1.7 802.1X的认证触发方式</a></li>
+  		<li><a href="#18">1.8 802.1X的认证过程</a></li>
+  		<li><a href="#19">1.9 802.1X的接入控制方式</a></li>
+  		<li><a href="#110">1.10 802.1X的定时器</a></li>
+  		<li><a href="#111">1.11 和802.1X配合使用的特性</a></li>
+  	</ul>
+  </div>
+
+  <h5><span id="11" style="color: #008000;"><strong>1.1 802.1X</strong></span></h5>
+    <p>IEEE802 LAN/WAN委员会为解决无线局域网网络安全问题，提出了802.1X协议。后来，802.1X协议作为局域网端口的一个普通接入控制机制在以太网中被广泛应用，主要解决以太网内认证和安全方面的问题。</p>
+    <p>802.1X协议是一种基于端口的网络接入控制协议（port based network access control protocol）。“基于端口的网络接入控制”是指在局域网接入设备的端口这一级对所接入的用户设备进行认证和控制。连接在端口上的用户设备如果能通过认证，就可以访问局域网中的资源；如果不能通过认证，则无法访问局域网中的资源。</p>
+  <h5><span id="12" style="color: #008000;"><strong>1.2 802.1X的体系结构</strong></span></h5>
+    <p>802.1X系统为典型的Client/Server结构，如图 1所示，包括三个实体：客户端（Client）、设备端（Device）和认证服务器（Server）。</p>
+    <div style="margin: auto; padding:3em ;width: 50%;"><img src="{% static 'img/baseline/dot1x1.png' %}" alt="" ></div>
+    	<ul style="list-style-type: disc;">
+    		<li>客户端是位于局域网段一端的一个实体，由该链路另一端的设备端对其进行认证。客户端一般为一个用户终端设备，用户可以通过启动客户端软件发起802.1X认证。客户端必须支持EAPOL（Extensible Authentication Protocol over LAN，局域网上的可扩展认证协议）。</li>
+    		<li>设备端是位于局域网段一端的另一个实体，对所连接的客户端进行认证。设备端通常为支持802.1X协议的网络设备，它为客户端提供接入局域网的端口，该端口可以是物理端口，也可以是逻辑端口。</li>
+    		<li>认证服务器是为设备端提供认证服务的实体。认证服务器用于实现对用户进行认证、授权和计费，通常为RADIUS（Remote Authentication Dial-In User Service，远程认证拨号用户服务）服务器。</li>
+    	</ul>
+  <h5><span id="13" style="color: #008000;"><strong>1.3 802.1X的认证方式</strong></span></h5>
+     <p>802.1X认证系统使用EAP（Extensible Authentication Protocol，可扩展认证协议），来实现客户端、设备端和认证服务器之间认证信息的交换。</p>
+     <ul style="list-style-type: disc;">
+       <li>在客户端与设备端之间，EAP协议报文使用EAPOL封装格式，直接承载于LAN环境中。</li>
+       <li>在设备端与RADIUS服务器之间，可以使用两种方式来交换信息。一种是EAP协议报文由设备端进行中继，使用EAPOR（EAP over    RADIUS）封装格式承载于RADIUS协议中；另一种是EAP协议报文由设备端进行终结，采用包含PAP（Password Authentication Protocol，密码验证协议）或CHAP（Challenge Handshake    Authentication Protocal，质询握手验证协议）属性的报文与RADIUS服务器进行认证交互。</li>
+     </ul>
+  <h5><span id="14" style="color: #008000;"><strong>1.4 802.1X的基本概念</strong></span></h5>
+    <h6><strong>1. 受控/非受控端口</strong></h6>
+       <p>设备端为客户端提供接入局域网的端口，这个端口被划分为两个逻辑端口：受控端口和非受控端口。任何到达该端口的帧，在受控端口与非受控端口上均可见。</p>
+       <ul style="list-style-type: disc;">
+         <li>非受控端口始终处于双向连通状态，主要用来传递EAPOL协议帧，保证客户端始终能够发出或接收认证报文。</li>
+         <li>受控端口在授权状态下处于双向连通状态，用于传递业务报文；在非授权状态下禁止从客户端接收任何报文。</li>
+       </ul>
+    <h6 ><strong>2. 授权/非授权状态</strong></h6>
+       <p>设备端利用认证服务器对需要接入局域网的客户端执行认证，并根据认证结果（Accept或Reject）对受控端口的授权/非授权状态进行相应地控制。
+   
+       图 2显示了受控端口上不同的授权状态对通过该端口报文的影响。图中对比了两个802.1X认证系统的端口状态。系统1的受控端口处于非授权状态（相当于端口开关打开），系统2的受控端口处于授权状态   （相当于端口开关关闭）。</p>
+       <div style="margin: auto; padding:3em ;width: 50%;"><img src="{% static 'img/baseline/dot1x1-2.png' %}" alt="" ></div>
+       <div>
+       <p>用户可以通过在端口下配置的接入控制的模式来控制端口的授权状态。端口支持以下三种接入控制模式：</p>
+       <ul style="list-style-type: disc;">
+         <li>强制授权模式（authorized-force）：表示端口始终处于授权状态，允许用户不经认证授权即可访问网络资源。</li>
+         <li>强制非授权模式（unauthorized-force）：表示端口始终处于非授权状态，不允许用户进行认证。设备端不对通过该端口接入的客户端提供认证服务。</li>
+         <li>   自动识别模式（auto）：表示端口初始状态为非授权状态，仅允许EAPOL报文收发，不允许用户访问网络资源；如果认证通过，则端口切换到授权状态，允许用户访问网络资源。这也是最常见的情况。</   li></ul>
+    <h6><strong>3. 受控方向</strong></h6>
+       <p>在非授权状态下，受控端口可以被设置成单向受控和双向受控。</p>
+       <ul style="list-style-type: disc;">
+         <li>实行双向受控时，禁止帧的发送和接收；</li>
+         <li>实行单向受控时，禁止从客户端接收帧，但允许向客户端发送帧。</li>
+       </ul>
+  <h5><span id="15" style="color: #008000;"><strong>1.5 EAPOL消息的封装</strong></span></h5>
+    <h6><strong>1. EAPOL数据包的格式</strong></h6>
+      <p>EAPOL是802.1X协议定义的一种报文封装格式，主要用于在客户端和设备端之间传送EAP协议报文，以允许EAP协议报文在LAN上传送。EAPOL数据包的格式如图 3所示。</p>
+      <div style="margin: auto; padding:3em ;width: 50%;"><p>图 3 EAPOL数据包格式</p><img src="{% static 'img/baseline/dot1x1-3.png' %}"     alt="" ></div>
+      <ul style="list-style-type: disc;">
+        <li>PAE Ethernet Type：表示协议类型，为0x888E。</li>
+        <li>Protocol Version：表示EAPOL帧的发送方所支持的协议版本号。</li>
+        <li>Type：表示EAPOL数据帧类型，目前设备上支持的数据类型见表 1-1。</li>
+        <li>Length：表示数据长度，也就是“Packet Body”字段的长度，单位为字节。如果为0，则表示没有后面的数据域。</li>
+        <li>Packet Body：表示数据内容，根据不同的Type有不同的格式。</li>
+      </ul>
+      <p">表1-1    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp    ;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp    ;EAPOL数据类型</p>
+      <table id="tablepress-1" class="tablepress tablepress-id-1">
+      <tbody class="row-hover">
+        <tr class="row-1 odd">
+          <td class="column-1">类型</td>
+          <td class="column-2">说明</td>
+        </tr>
+        <tr class="row-2 even">
+          <td class="column-1">EAP-Packet（值为0x00）：认证信息帧，用于承载认证信息</td>
+          <td class="column-2">该帧在设备端重新封装并承载于RADIUS协议上，便于穿越复杂的网络到达认证服务器</td>
+        </tr>
+        <tr class="row-3 odd">
+          <td class="column-1">EAPOL-Start（值为0x01）：认证发起帧<br>EAPOL-Logoff（值为0x02）：退出请求帧</td>
+          <td class="column-2">这两种类型的帧仅在客户端和设备端之间存在</td>
+        </tr>
+      </tbody>
+      </table>
+    <h6><strong>2. EAP数据包的格式</strong></h6>
+      <p>当EAPOL数据包格式Type域为EAP-Packet时，Packet Body为EAP数据包结构，如图 4所示。</p>
+      <div style="margin: auto; padding:3em ;width: 50%;"><p>图 4 EAP数据包格式</p><img src="{% static 'img/baseline/dot1x1-4.png' %}"     alt="" ></div>
+      <p>Code：指明EAP包的类型，共有4种：Request、Response、Success、Failure。</p>
+      <ul style="list-style-type: disc;">
+        <li>Success和Failure类型的包没有Data域，相应的Length域的值为4。</li>
+        <li>Request和Response类型数据包的Data域的格式如图 5所示。Type为EAP的认证类型，Type     data的内容由类型决定。例如，Type值为1时代表Identity，用来查询对方的身份；Type值为4时，代表MD5-Challenge，类似于PPP CHAP协议，包含质询消息。</li>
+      </ul>
+      <div style="margin: auto; padding:3em ;width: 50%;"><p>图 5 Request和Response类型数据包的Data域的格式</p><img src="    {% static 'img/baseline/dot1x1-5.png' %}" alt="" ></div>
+      <ul style="list-style-type: disc;">
+        <li>Identifier：用于匹配Request消息和Response消息。</li>
+        <li>Length：EAP包的长度，包含Code、Identifier、Length和Data域，单位为字节。</li>
+        <li>Data：EAP包的内容，由Code类型决定。</li>
+      </ul>
+  <h5><span id="16" style="color: #008000;"><strong>1.6 EAP属性的封装</strong></span></h5>
+    <p>RADIUS为支持EAP认证增加了两个属性：EAP-Message（EAP消息）和Message-Authenticator（消息认证码）。</p>
+    <h6><strong>1. EAP-Message</strong></h6>
+      <p>如图 6所示，这个属性用来封装EAP数据包，类型代码为79，String域最长253字节，如果EAP数据包长度大于253字节，可以对其进行分片，依次封装在多个EAP-Message属性中。</p>
+      <div style="margin: auto; padding:3em ;width: 50%;"><p>图 6 EAP-Message属性封装</p><img src="    {% static 'img/baseline/dot1x1-6.png' %}" alt="" ></div>
+    <h6><strong>2. Message-Authenticator</strong></h6>
+      <p>如图 7所示，这个属性用于在使用EAP、CHAP等认证方法的过程中，避免接入请求包被窃听。在含有EAP-Message属性的数据包中，必须同时也包含Message-Authenticator，否则该数据包会被认为    无效而被丢弃。</p>
+      <div style="margin: auto; padding:3em ;width: 50%;"><p>图 7 Message-Authenticator属性</p><img src="    {% static 'img/baseline/dot1x1-7.png' %}" alt="" ></div>
+  <h5><span id="17" style="color: #008000;"><strong>1.7 802.1X的认证触发方式</strong></span></h5>
+    <p>802.1X的认证过程可以由客户端主动发起，也可以由设备端发起。设备支持的认证触发方式包括以下两种：</p>
+    <h6><strong>1. 客户端主动触发方式</strong></h6>
+      <p>客户端主动向设备端发送EAPOL-Start报文来触发认证，该报文目的地址为IEEE 802.1X协议分配的一个组播MAC地址：01-80-C2-00-00-03。
+      
+      另外，由于网络中有些设备不支持上述的组播报文，使得认证设备无法收到客户端的认证请求，因此设备端还支持广播触发方式，即，可以接收客户端发送的目的地址为广播MAC地址的EAPOL-Start报文。    这种触发方式需要H3C iNode的802.1X客户端的配合。</p>
+    <h6><strong>2. 设备端主动触发方式</strong></h6> 
+      <p>设备会每隔N秒（例如30秒）主动向客户端发送EAP-Request/Identity报文来触发认证，这种触发方式用于支持不能主动发送EAPOL-Start报文的客户端，例如Windows XP自带的802.1X客户端。</p>
+  <h5><span id="18" style="color: #008000;"><strong>1.8 802.1X的认证过程</strong></span></h5>
+    <p>802.1X系统支持EAP中继方式和EAP终结方式与远端RADIUS服务器交互完成认证。以下关于两种认证方式的过程描述，都以客户端主动发起认证为例。</p>
+    <h6><strong>1. EAP中继方式</strong></h6> 
+      <p>这种方式是IEEE 802.1X标准规定的，将EAP（可扩展认证协议）承载在其它高层协议中，如EAP over RADIUS，以便扩展认证协议报文穿越复杂的网络到达认证服务器。一般来说，EAP中继方式需要RADIUS服务器支持EAP属性：EAP-Message和Message-Authenticator，分别用来封装EAP报文及对携带EAP-Message的RADIUS报文进行保护。
+
+      下面以EAP-MD5方式为例介绍基本业务流程，如图 8所示。</p>
+      <div style="margin: auto; padding:3em ;width: 50%;"><p>图 8 IEEE 802.1X认证系统的EAP中继方式业务流程</p><img src="    {% static 'img/baseline/dot1x1-8.png' %}" alt="" ></div>
+      <ol><p>认证过程如下：</p>
+      	<li>当用户有访问网络需求时打开802.1X客户端程序，输入已经申请、登记过的用户名和密码，发起连接请求（EAPOL-Start报文）。此时，客户端程序将发出请求认证的报文给设备端，开始启动一次认证过程。</li>
+      	<li>设备端收到请求认证的数据帧后，将发出一个请求帧（EAP-Request/Identity报文）要求用户的客户端程序发送输入的用户名。</li>
+      	<li>客户端程序响应设备端发出的请求，将用户名信息通过数据帧（EAP-Response/Identity报文）发送给设备端。设备端将客户端发送的数据帧经过封包处理后（RADIUS Access-Request报文）送给认证服务器进行处理。</li>
+      	<li>RADIUS服务器收到设备端转发的用户名信息后，将该信息与数据库中的用户名表对比，找到该用户名对应的密码信息，用随机生成的一个加密字对它进行加密处理，同时也将此加密字通过RADIUS Access-Challenge报文发送给设备端，由设备端转发给客户端程序。</li>
+      	<li>客户端程序收到由设备端传来的加密字（EAP-Request/MD5 Challenge报文）后，用该加密字对密码部分进行加密处理（此种加密算法通常是不可逆的），生成EAP-Response/MD5 Challenge报文，并通过设备端传给认证服务器。</li>
+      	<li>RADIUS服务器将收到的已加密的密码信息（RADIUS Access-Request报文）和本地经过加密运算后的密码信息进行对比，如果相同，则认为该用户为合法用户，反馈认证通过的消息（RADIUS Access-Accept报文和EAP-Success报文）。</li>
+      	<li>设备收到认证通过消息后将端口改为授权状态，允许用户通过端口访问网络。在此期间，设备端会通过向客户端定期发送握手报文的方法，对用户的在线情况进行监测。缺省情况下，两次握手请求报文都得不到客户端应答，设备端就会让用户下线，防止用户因为异常原因下线而设备无法感知。</li>
+      	<li>客户端也可以发送EAPOL-Logoff报文给设备端，主动要求下线。设备端把端口状态从授权状态改变成未授权状态，并向客户端发送EAP-Failure报文。</li>
+      </ol>
+    <h6><strong>2. EAP终结方式</strong></h6>
+      <p>这种方式将EAP报文在设备端终结并映射到RADIUS报文中，利用标准RADIUS协议完成认证、授权和计费。设备端与RADIUS服务器之间可以采用PAP或者CHAP认证方法。以下以CHAP认证方法为例介绍基本业务流程，如图 9所示。</p>
+      <div style="margin: auto; padding:3em ;width: 50%;"><p>图 9 IEEE 802.1X认证系统的EAP终结方式业务流程</p><img src="    {% static 'img/baseline/dot1x1-9.png' %}" alt="" ></div>
+      <p>EAP终结方式与EAP中继方式的认证流程相比，不同之处在于用来对用户密码信息进行加密处理的随机加密字由设备端生成，之后设备端会把用户名、随机加密字和客户端加密后的密码信息一起送给RADIUS服务器，进行相关的认证处理。</p>
+  <h5><span id="19" style="color: #008000;"><strong>1.9 802.1X的认证过程</strong></span></h5>
+    <ul style="list-style-type: disc;"><p>设备不仅支持协议所规定的基于端口的接入认证方式，还对其进行了扩展、优化，支持基于MAC的接入控制方式。</p>
+    	<li>当采用基于端口的接入控制方式时，只要该端口下的第一个用户认证成功后，其它接入用户无须认证就可使用网络资源，但是当第一个用户下线后，其它用户也会被拒绝使用网络。</li>
+    	<li>采用基于MAC的接入控制方式时，该端口下的所有接入用户均需要单独认证，当某个用户下线时，也只有该用户无法使用网络。</li>
+    </ul>
+  <h5><span id="110" style="color: #008000;"><strong>1.10 802.1X的定时器</strong></span></h5>
+    <ul style="list-style-type: disc;"><p>802.1X认证过程中会启动多个定时器以控制接入用户、设备以及RADIUS服务器之间进行合理、有序的交互。802.1X的定时器主要有以下几种：</p>
+    	<li>用户名请求超时定时器（tx-period）：该定时器定义了两个时间间隔。其一，当设备端向客户端发送EAP-Request/Identity请求报文后，设备端启动该定时器，若在tx-period设置的时间间隔内，设备端没有收到客户端的响应，则设备端将重发认证请求报文；其二，为了兼容不主动发送EAPOL-Start连接请求报文的客户端，设备会定期组播EAP-Request/Identity请求报文来检测客户端。tx-period定义了该组播报文的发送时间间隔。</li>
+    	<li> 客户端认证超时定时器（supp-timeout）：当设备端向客户端发送了EAP-Request/MD5 Challenge请求报文后，设备端启动此定时器，若在该定时器设置的时长内，设备端没有收到客户端的响应，设备端将重发该报文。</li>
+    	<li>认证服务器超时定时器（server-timeout）：当设备端向认证服务器发送了RADIUS Access-Request请求报文后，设备端启动server-timeout定时器，若在该定时器设置的时长内，设备端没有收到认证服务器的响应，设备端将重发认证请求报文。</li>
+    	<li>握手定时器（handshake-period）：此定时器是在用户认证成功后启动的，设备端以此间隔为周期发送握手请求报文，以定期检测用户的在线情况。如果配置发送次数为N，则当设备端连续N次没有收到客户端的响应报文，就认为用户已经下线。</li>
+    	<li> 静默定时器（quiet-period）：对用户认证失败以后，设备端需要静默一段时间（该时间由静默定时器设置），在静默期间，设备端不处理该用户的认证请求。</li>
+    	<li>周期性重认证定时器（reauth-period）：如果端口下开启了周期性重认证功能，设备端以此定时器设置的时间间隔为周期对该端口在线用户发起重认证。</li>
+    </ul>
+  <h5><span id="111" style="color: #008000;"><strong>1.11 和802.1X配合使用的特性</strong></span></h5>
+    <h6><strong>1. VLAN下发</strong></h6>
+      <p>802.1X用户在服务器上通过认证时，服务器会把授权信息传送给设备端。如果服务器上配置了下发VLAN功能，则授权信息中含有授权下发的VLAN信息，设备根据用户认证上线的端口链路类型，按以下三种情况将端口加入下发VLAN中。</p>
+      <ul style="list-style-type: disc;">
+      	<li>端口的链路类型为Access，当前Access端口离开用户配置的VLAN并加入授权下发的VLAN中。</li>
+      	<li>端口的链路类型为Trunk，设备允许授权下发的VLAN通过当前Trunk端口，并且端口的缺省VLAN ID为下发VLAN的VLAN ID。</li>
+      	<li>端口的链路类型为Hybrid，设备允许授权下发的VLAN以不携带Tag的方式通过当前Hybrid端口，并且端口的缺省VLAN ID为下发VLAN的VLAN ID。需要注意的是，若当前Hybrid端口上配置了基于MAC的VLAN，则设备将根据认证服务器下发的授权VLAN动态地创建基于用户MAC的VLAN，而端口的缺省VLAN ID并不改变。</li>
+      </ul>
+      <p>授权下发的VLAN并不改变端口的配置，也不影响端口的配置。但是，授权下发的VLAN的优先级高于用户配置的VLAN，即通过认证后起作用的VLAN是授权下发的VLAN，用户配置的VLAN在用户下线后生效。</p>
+
+    <h6><strong>2. Guest VLAN</strong></h6>
+      <p>Guest VLAN功能允许用户在未认证的情况下，可以访问某一特定VLAN中的资源，比如获取客户端软件，升级客户端或执行其他一些用户升级程序。这个VLAN称之为Guest VLAN。
+
+  根据端口的接入控制方式不同，可以将Guest VLAN划分基于端口的Guest VLAN和基于MAC的Guest VLAN。</p>
+      <p> （1）PGV（Port-based Guest VLAN）</p>
+      <p>在接入控制方式为portbased的端口上配置的Guest VLAN称为PGV。若在一定的时间内（默认90秒），配置了PGV的端口上无客户端进行认证，则该端口将被加入Guest VLAN，所有在该端口接入的用户将被授权访问Guest VLAN里的资源。端口加入Guest VLAN的情况与加入授权下发VLAN相同，与端口链路类型有关。
+
+  当端口上处于Guest VLAN中的用户发起认证且失败时：如果端口配置了Auth-Fail VLAN，则该端口会被加入Auth-Fail VLAN；如果端口未配置Auth-Fail VLAN，则该端口仍然处于Guest VLAN内。关于Auth-Fail VLAN的具体介绍请参见“3. Auth-Fail VLAN”。</p>
+      <p>当端口上处于Guest VLAN中的用户发起认证且成功时，端口会离开Guest VLAN，之后端口加入VLAN情况与认证服务器是否下发VLAN有关，具体如下：</p>
+      <ul style="list-style-type: disc;">
+      	<li>若认证服务器下发VLAN，则端口加入下发的VLAN中。用户下线后，端口离开下发的VLAN回到初始VLAN中，该初始VLAN为端口加入Guest VLAN之前所在的VLAN。</li>
+      	<li>若认证服务器未下发VLAN，则端口回到初始VLAN中。用户下线后，端口仍在该初始VLAN中。</li>
+      </ul>
+      <p> （2）MGV（MAC-based Guest VLAN）</p>
+      <p>在接入控制方式为macbased的端口上配置的Guest VLAN称为MGV。配置了MGV的端口上未认证的用户被授权访问Guest VLAN里的资源。</p>
+      <p>当端口上处于Guest VLAN中的用户发起认证且失败时：如果端口配置了Auth-Fail VLAN，则认证失败的用户将被加入Auth-Fail VLAN；如果端口未配置Auth-Fail VLAN，则该用户将仍然处于Guest VLAN内。</p>
+    <h6><strong>3. Auth-Fail VLAN</strong></h6>
+      <p>Auth-Fail VLAN功能允许用户在认证失败的情况下可以访问某一特定VLAN中的资源，这个VLAN称之为Auth-Fail VLAN。需要注意的是，这里的认证失败是认证服务器因某种原因明确拒绝用户认证通过，比如用户密码错误，而不是认证超时或网络连接等原因造成的认证失败。</p>
+      <p>与Guest VLAN类似，根据端口的接入控制方式不同，可以将Auth-Fail VLAN划分为基于端口的Auth-Fail VLAN和基于MAC的Auth-Fail VLAN。</p>
+      <p>(1)        PAFV（Port-based Auth-Fail VLAN）</p>
+      <p>在接入控制方式为portbased的端口上配置的Auth-Fail VLAN称为PAFV。在配置了PAFV的端口上，若有用户认证失败，则该端口会被加入到Auth-Fail VLAN，所有在该端口接入的用户将被授权访问Auth-Fail VLAN里的资源。端口加入Auth-Fail VLAN的情况与加入授权下发VLAN相同，与端口链路类型有关。</p>
+      <p>当端口上处于Auth-Fail VLAN中的用户再次发起认证时：如果认证失败，则该端口将会仍然处于Auth-Fail VLAN内；如果认证成功，则该端口会离开Auth-Fail VLAN，之后端口加入VLAN情况与认证服务器是否下发VLAN有关，具体如下：</p>
+      <ul style="list-style-type: disc;">
+      	<li>若认证服务器下发VLAN，则端口加入下发的VLAN中。用户下线后，端口会离开下发的VLAN回到初始VLAN中，该初始VLAN为端口加入任何授权VLAN之前所在的VLAN。</li>
+      	<li>若认证服务器未下发VLAN，则端口回到初始VLAN中。用户下线后，端口仍在该初始VLAN中。</li>
+      </ul>
+      <p>(2)        MAFV（MAC-based Auth-Fail VLAN）</p>
+      <p>在接入控制方式为macbased的端口上配置的Auth-Fail VLAN称为MAFV。在配置了MAFV的端口上，认证失败的用户将被授权访问Auth-Fail VLAN里的资源。</p>
+      <p>当Auth-Fail VLAN中的用户再次发起认证时，如果认证成功，则设备会根据认证服务器是否下发VLAN决定将该用户加入到下发的VLAN中，或回到加入Auth-Fail VLAN之前端口所在的初始VLAN。</p>
+    <h6><strong>4. ACL下发</strong></h6>
+      <p>ACL（Access Control List，访问控制列表）提供了控制用户访问网络资源和限制用户访问权限的功能。当用户上线时，如果RADIUS服务器上配置了授权ACL，则设备会根据服务器下发的授权ACL对用户所在端口的数据流进行控制；在服务器上配置授权ACL之前，需要在设备上配置相应的规则。管理员可以通过改变服务器的授权ACL设置或设备上对应的ACL规则来改变用户的访问权限。</p>
+    <h6><strong>5. 指定端口的强制认证域</strong></h6>
+      <p>指定端口的强制认证域（mandatory domain）为802.1X接入提供了一种安全控制策略。所有从该端口接入的802.1X用户将被强制使用该认证域来进行认证、授权和计费，可以防止用户通过恶意假冒其它域账号来接入网络。</p>
+      <p>另外，对于采用证书的EAP中继方式的802.1X认证来说，接入用户的客户端证书决定了用户的域名。因此，即使所有端口上客户端的用户证书隶属于同一证书颁发机构，即输入的用户域名相同，管理员也可以通过配置强制认证域对不同端口指定不同的认证域，从而增加了管理员部署802.1X接入策略的灵活性。</p>
+
+</div>
+{% include 'backtotop.html'%}
+</body>
+</html>

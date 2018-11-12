@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<link href="{%static "css/adstyle.css" %}" rel="stylesheet" type="text/css" />
+{% include "header.html" %}
+<style>
+    body{
+        background-color: #F2F2F2;
+        margin-left: 220px;
+        margin-top: 60px;
+        padding: 20px;
+    }
+</style>
+<body>
+{% include 'baseline/baseline-menu.html' %}
+<div class="content" align="left">
+    <h5><span style="color: #008000;"><strong>思科设备软件类型</strong></span></h5>
+        <p>分行目前使用的设备型号及软件类型：</p>
+        <p>表1-1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 思科设备型号及软件类型</p>
+        <table id="tablepress-1" class="tablepress">
+            <tbody class="row-hover">
+                <tr class="row-1 odd">
+                    <td class="column-1">软件类型</td>
+                    <td class="column-2">设备型号</td>
+                    <td class="column-3">软件说明</td>
+                </tr>
+                <tr class="row-2 even">
+                    <td class="column-1">IOS</td>
+                    <td class="column-2">2900系列路由器<br>3900系列路由器<br>Catalyst系列交换机<br></td>
+                    <td class="column-3">IOS是思科模块化的操作系统，具有模块性、可伸缩性、可操作性、可管理性等特点</td>
+                </tr>
+                <tr class="row-3 odd">
+                    <td class="column-1">IOS-XE</td>
+                    <td class="column-2">Catalyst系列交换机<br>ASR1K系列路由器<br></td>
+                    <td class="column-3">IOS XE是思科为企业和SP边缘设备市场开发的新一代架构网络操作系统，IOS XE基于linux内核，是模块化、进程化的操作系统</td>
+                </tr>
+                <tr class="row-4 even">
+                    <td class="column-1">IOS-XR</td>
+                    <td class="column-2">ASR9K系列路由器</td>
+                    <td class="column-3">IOS XR是思科为大型企业和电信运营商开发的新一代架构网络操作系统</td>
+                </tr>
+                    <tr class="row-5 odd">
+                    <td class="column-1">NX-OS</td>
+                    <td class="column-2">NEXUS系列交换机</td>
+                    <td class="column-3">NX-OS软件是一个数据中心级的操作系统，该系统采用模块化设计、可用性和可维护性；在成熟的 SAN-OS软件的基础上，NX-OS确保持续的可用性</td>
+                </tr>
+            </tbody>
+        </table>
+    <p><!-- #tablepress-1 from cache --></p>
+    <blockquote class="blockq"><p>
+        每个软件类型都有众多的软件版本，不同软件版本间可能存在命令上的差异
+    </p></blockquote>
+
+</div>
+</body>
+</html>

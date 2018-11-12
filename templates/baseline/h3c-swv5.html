@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<link href="{%static "css/adstyle.css" %}" rel="stylesheet" type="text/css" />
+{% include "header.html" %}
+<style>
+    body{
+        background-color: #F2F2F2;
+        margin-left: 220px;
+        margin-top: 60px;
+        padding: 20px;
+    }
+</style>
+<body>
+{% include 'baseline/baseline-menu.html' %}
+<div class="content" align="left">
+    <h1 class="head_h1">华三ComwareV5交换机基线配置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     {% include 'downloadico.html' %}
+	</h1>
+    <p><span style="color: #800080;"><strong>内容简述：</strong></span></p>
+    <p>介绍了华三ComwareV5交换机配置模版的内容以及相关的配置说明</p>
+    <div id="toc_container" class="toc_light_blue no_bullets";">
+        <p class="toc_title">目录结构</p>
+        <ul class="toc_list">
+            <li><a href="#11">1.1 设备命名配置</a></li>
+            <li><a href="#12">1.2 优化默认服务</a></li>
+            <li><a href="#13">1.3 AAA配置</a></li>
+            <li><a href="#14">1.4 SSH登陆配置</a></li>
+            <li><a href="#15">1.5 生成树配置</a></li>
+            <li><a href="#16">1.6 SNMP配置</a></li>
+            <li><a href="#17">1.7 LOG日志配置</a></li>
+            <li><a href="#18">1.8 NTP配置</a></li>
+            <li><a href="#19">1.9 生产交换机端口配置</a></li>
+            <li><a href="#110">1.10 办公交换机端口配置</a></li>
+        </ul>
+    </div>
+    <h5><span id="11"><span style="color: #008000;"><strong>1.1 设备命名配置</strong></span></span></h5>
+        <p>设备命名需采用以下统一命名规则：</p>
+        <h4 class="well">AA-BB-CC-DD-EE<br></h4>
+        <blockquote><ul style="list-style-type:disc;">
+            <li>AA: 分行标识</li>
+            <li>BB: 功能区域代码</li>
+            <li>CC: 设备类型代码</li>
+            <li>DD: 机柜位置信息(可选)</li>
+            <li>EE: 设备编码</li>
+        </ul></blockquote>
+        <p>设备命名配置：</p>
+<pre>hostname XXFH-CO-CS-01</pre>
+    <h5><span id="12"><span style="color: #008000;"><strong>1.2 优化默认服务</strong></span></span></h5>
+        <p>华三交换机默认启用的部分安全服务，对于内网环境存在隐患，可以考虑关闭</p>
+        <p">表1-1    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;建议关闭服务</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">undo ip https enable</td>
+                <td class="column-2">关闭https服务</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1">undo dhcp enable</td>
+                <td class="column-2">关闭DHCP服务</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1">undo ip httpss enable</td>
+                <td class="column-2">关闭httpsS服务</td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1">undo telnet server enable</td>
+                <td class="column-2">关闭Telnet服务</td>
+            </tr>
+            <tr class="row-6 even">
+                <td class="column-1">undo ip urpf strict</td>
+                <td class="column-2">关闭IP源地址校验功能</td>
+            </tr>
+            <tr class="row-7 odd">
+                <td class="column-1">undo ip forward-broadcast</td>
+                <td class="column-2">关闭丢弃目的不可达ICMP报文功能</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>建议启用华三交换机部分服务如下：</p>
+        <p">表1-2    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;建议开启服务</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">ip unreachables enable</td>
+                <td class="column-2">开启目的不可达ICMP报文发送功能</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1">ip ttl-expires enable</td>
+                <td class="column-2">开启icmp超时报文的发送功能</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>优化默认服务配置命令如下：</p>
+<pre>
+undo ip https enable
+undo dhcp enable
+undo ip httpss enable
+undo telnet server enable
+undo ip urpf strict
+undo ip forward-broadcast
+#
+ip unreachables enable
+ip ttl-expires enable
+</pre>
+    <h5><span id="13"><span style="color: #008000;"><strong>1.3 AAA配置</strong></span></span></h5>
+        <p>AAA ，认证(Authentication)：验证用户的身份与可使用的网络服务；授权(Authorization)：依据认证结果开放网络服务给用户；计帐(Accounting)：记录用户对各种网络服务的用量，并提供给计费系统。整个系统在网络管理与安全问题中十分有效。常用的AAA协议是Radius（RFC 2865，RFC 2866），TACACS（RFC1492），华三设备AAA认证主要用到的是HWTACACA协议。</p>
+        <blockquote><p>
+            分行核心设备指向总行3A服务器，其他设备指向分行的3A服务器。
+        </p></blockquote>
+        <p>AAA模版部分配置说明：</p>
+        <p>表1-3  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AAA模版配置</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">hwtacacs scheme acs</td>
+                <td class="column-2">进入模版配置模式</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1">primary authentication <i>&lt;hwtacacs 认证主服务器&gt;</i></td>
+                <td class="column-2">总行主认证服务器地址21.14.0.122，备21.14.0.123</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1">  primary authorization <i>&lt;hwtacacs 授权主服务器&gt;</i></td>
+                <td class="column-2">总行主授权服务器地址21.14.0.122，备21.14.0.123</td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1">primary accounting <i>&lt;hwtacacs 计费主服务器&gt;</i></td>
+                <td class="column-2">总行主计费服务器地址21.14.0.122，备21.14.0.123</td>
+            </tr>
+            <tr class="row-6 even">
+                <td class="column-1">  key authentication simple <i>&lt;3A认证密钥&gt;</i></td>
+                <td class="column-2">配置3A认证密钥，总行3a认证密钥为 {{ FH3A_KEY }}</td>
+            </tr>
+            <tr class="row-7 odd">
+                <td class="column-1">  key authorization simple <i>&lt;3A认证密钥&gt;</i></td>
+                <td class="column-2">配置3A授权密钥，总行3a认证密钥为 {{ FH3A_KEY }}</td>
+            </tr>
+            <tr class="row-8 even">
+                <td class="column-1">   key accounting simple <i>&lt;3A认证密钥&gt;</i></td>
+                <td class="column-2">配置3A计费密钥，总行3a认证密钥为 {{ FH3A_KEY }}</td>
+            </tr>
+            <tr class="row-9 odd">
+                <td class="column-1">user-name-format without-domain</td>
+                <td class="column-2">指定设备向HWTACACS服务器发送的报文中用户名不包含域名后缀</td>
+            </tr>
+            <tr class="row-10 even">
+                <td class="column-1"> nas-ip <i><设备管理地址></i></td>
+                <td class="column-2">指定设备向hwtacacs服务器发送hwtacacs报文的源IP地址，此地址必需与3A服务器上录入设备地址一致</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>AAA域部分配置说明：</p>
+        <p>表1-4  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AAA域配置</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">domain acs</td>
+                <td class="column-2">配置域信息,名字为acs</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1">authentication login hwtacacs-scheme acs local</td>
+                <td class="column-2">指定认证使用hwtacacs与local</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1"> authorization login hwtacacs-scheme acs local</td>
+                <td class="column-2">指定计费使用hwtacacs与local</td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1"> accounting login hwtacacs-scheme acs local </td>
+                <td class="column-2">指定授权使用hwtacacs与local</td>
+            </tr>
+            <tr class="row-6 even">
+                <td class="column-1"> authorization command hwtacacs-scheme acs local</td>
+                <td class="column-2">配置命令行授权采用hwtacacs授权和本地授权</td>
+            </tr>
+            <tr class="row-7 odd">
+                <td class="column-1">  accounting command hwtacacs-scheme acs</td>
+                <td class="column-2">配置命令行计费采用hwtacacs审计</td>
+            </tr>
+            <tr class="row-8 even">
+                <td class="column-1"> domain default enable acs</td>
+                <td class="column-2">指定系统缺省的ISP域为acs</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>AAA服务配置命令如下：</p>
+<pre>
+ hwtacacs scheme acs              
+ primary authentication <i>&lt;hwtacacs认证主服务器&gt;</i>
+ secondary authentication <i>&lt;hwtacacs认证备服务器&gt;</i>
+ primary authorization <i>&lt;hwtacacs授权主服务器&gt;</i>
+ secondary authorization <i>&lt;hwtacacs授权备服务器&gt;</i>
+ primary accounting <i>&lt;hwtacacs计费主服务器&gt;</i>
+ secondary accounting <i>&lt;hwtacacs计费备服务器&gt;</i>
+ key authentication simple <i>&lt;3A认证密钥&gt;</i>
+ key authorization simple <i>&lt;3A授权密钥&gt;</i>
+ key accounting simple <i>&lt;3A计费密钥&gt;</i>
+ user-name-format without-domain
+ nas-ip <i><设备管理地址></i>
+#
+domain acs
+ authentication login hwtacacs-scheme acs local
+ authorization login hwtacacs-scheme acs local
+ accounting login hwtacacs-scheme acs local
+ authorization command hwtacacs-scheme acs local
+ accounting command hwtacacs-scheme acs
+#
+domain default enable acs
+</pre>
+    <h5><span id="14"><span style="color: #008000;"><strong>1.4 SSH登陆配置</strong></span></span></h5>
+        <p>SSH是一种协议标准，其目的是实现安全远程登录以及其它安全网络服务。目前要求所有命令行登陆的设备均需使用SSH协议。</p>
+        <p>SSH部分配置说明：</p>
+        <p>表1-5  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SSH配置</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">undo local-user admin</td>
+                <td class="column-2">删除admin、root用户等默认本地用户</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1">local-user <i><本地用户></i></td>
+                <td class="column-2">新增本地用户,用户名为分行简称，如北京分行采用 "bjfh"作为用户名</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1">password simple <i><本地用户密码></i></td>
+                <td class="column-2">配置本地用户密码</td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1">authorization-attribute level 3</td>
+                <td class="column-2">授权用户角色为管理角色,V5中权限等级为0-3共四个等级，最高为3；V7中设置了0-15共16个权限等级</td>
+            </tr>
+            <tr class="row-6 even">
+                <td class="column-1">service-type ssh terminal</td>
+                <td class="column-2">指定使用SSH登陆与本地登陆</td>
+            </tr>
+            <tr class="row-7 odd">
+                <td class="column-1">public-key local create rsa </td>
+                <td class="column-2">生成本地RSA主机密钥对</td>
+            </tr>
+            <tr class="row-8 even">
+                <td class="column-1">public-key local create dsa </td>
+                <td class="column-2">生成本地DSA主机密钥对</td>
+            </tr>
+            <tr class="row-9 odd">
+                <td class="column-1">ssh server enable </td>
+                <td class="column-2">使能SSH服务器端的服务</td>
+            </tr>
+            <tr class="row-10 even">
+                <td class="column-1">acl number 2000 </td>
+                <td class="column-2">创建基本ACL，编号2000</td>
+            </tr>
+            <tr class="row-11 odd">
+                <td class="column-1">rule 5 permit source 21.4.0.88 0 </td>
+                <td class="column-2">指定总行允许登陆服务器，21.4.0.88（跳板机地址），21.15.255.1、21.15.255.2（总行核心交换机地址，用于作跳板机备份）10.2.95.211、21.14.0.0/24（总行网管地址）</td>
+            </tr>
+            <tr class="row-12 even">
+                <td class="column-1">idle-timeout 5 0</td>
+                <td class="column-2">配置超时时间为5分钟</td>
+            </tr>
+            <tr class="row-13 odd">
+                <td class="column-1">authentication-mode scheme | password</td>
+                <td class="column-2">指定认证模式:password(进行本地密码认证方式),scheme(进行AAA认证方式)。</td>
+            </tr>
+            <tr class="row-14 even">
+                <td class="column-1">protocol inbound ssh</td>
+                <td class="column-2">配置用户界面仅支持ssh服务</td>
+            </tr>
+            <tr class="row-15 odd">
+                <td class="column-1">user privilege level 3</td>
+                <td class="column-2">授权用户角色为管理角色,V5中权限等级为0-3共四个等级，最高为3；V7中设置了0-15共16个权限等级</td>
+            </tr>
+            <tr class="row-16 even">
+                <td class="column-1">command authorization</td>
+                <td class="column-2">使能命令行授权功能</td>
+            </tr>
+            <tr class="row-17 odd">
+                <td class="column-1">command accounting</td>
+                <td class="column-2">使能命令行审计功能</td>
+            </tr>
+            <tr class="row-18 even">
+                <td class="column-1">acl 2000 inbound</td>
+                <td class="column-2">配置允许登陆ACL</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>SSH登陆配置命令如下：</p>
+<pre>
+undo local-user admin
+#
+local-user <i><本地用户></i>
+ password simple <i><本地用户密码></i>
+ authorization-attribute level 3
+ service-type ssh terminal
+#
+public-key local create rsa
+#
+public-key local create dsa
+#
+ssh server enable
+#
+acl number 2000                                      
+ description "VTY_ACL"                                  
+ rule 5 permit source 21.4.0.88 0
+ rule 15 permit source 21.15.255.1 0
+ rule 20 permit source 21.15.255.2 0
+ rule 25 permit source 10.2.95.211 0
+ rule 30 permit source 21.14.0.0 0.0.0.255            
+ //分行地址请自行添加，不允许any
+ rule 1000 deny 
+#
+user-interface vty 0 15
+ idle-timeout 5 0
+ authentication-mode scheme
+ protocol inbound ssh
+ user privilege level 3
+ command authorization
+ command accounting
+ acl 2000 inbound
+#
+user-interface aux 0
+ idle-timeout 5 0
+ authentication-mode password
+ user privilege level 3
+ command accounting
+ acl 2000 inbound                         
+</pre>
+    <h5><span id="15"><span style="color: #008000;"><strong>1.5 生成树配置</strong></span></span></h5>
+        <p>生成树协议STP(Spanning Tree Protocol)的主要功能有两个：一是在利用生成树算法、在以太网络中，创建一个以某台交换机的某个端口为根的生成树，避免环路。二是在以太网络拓扑发生变化时，通过生成树协议达到收敛保护的目的。分行使用的生成树协议有快速生成树RSTP<span style="color: red">（思科设备）</span>，与多进程生成树协议MSTP<span style="color: red">（非思科设备）</span></p>
+        <p>生成树部分配置说明：</p>
+        <p>表1-6  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生成树配置</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">stp enable</td>
+                <td class="column-2">全局使能STP</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1">stp instance 0 root primary</td>
+                <td class="column-2">设置实例0优先级为 primary</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1">stp mode mstp</td>
+                <td class="column-2">配置生成树类型为MSTP</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1">stp bpdu-protection</td>
+                <td class="column-2">配置BPDU保护</td>
+            </tr>
+        </tbody>
+        </table>
+        <blockquote><p>
+            修改生成树类型以及根节点会引起生成树重新收敛，可能导致业务流量中断，建议选择变更窗口期进行修改。
+        </p></blockquote>
+        <p>生成树配置命令如下：</p>
+<pre>
+<span style="color: red;">主交换机，配置如下：</span>
+stp enable
+#
+stp instance 0 root primary
+stp mode mstp
+stp bpdu-protection
+#
+<span style="color: red;">备交换机，配置如下：</span>
+stp enable
+#
+stp instance 0 root secondary
+stp mode mstp
+stp bpdu-protection
+#
+<span style="color: red;">其它交换机，配置如下：</span>
+stp enable
+#
+stp mode mstp
+stp bpdu-protection
+</pre>
+    <h5><span id="16"><span style="color: #008000;"><strong>1.6 SNMP配置</strong></span></span></h5>
+        <p>SNMP(Simple Network Management Protocol)是一种简单网络管理协议，它属于TCP/IP五层协议中的应用层协议，用于网络管理的协议。SNMP主要用于网络设备的管理。由于SNMP协议简单可靠 ，受到了众多厂商的欢迎，成为了目前最为广泛的网管协议。</p>
+        <p>SNMP的工作方式：管理员需要向设备获取数据，所以SNMP提供了【RO】操作；管理员需要向设备执行设置操作，所以SNMP提供了【RW】操作；设备需要在重要状况改变的时候，向管理员通报事件的发生，所以SNMP提供了【Trap】操作。</p>
+        <p>SNNP部分配置说明：</p>
+        <p>表1-7  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SNMP配置</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">acl name 2001</td>
+                <td class="column-2">定义允许的SNMP服务器范围</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1"> rule 10 permit source 21.14.0.0 0.0.0.255   </td>
+                <td class="column-2">允许总行网管地址</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1"> rule 20 permit source 10.2.95.211 0</td>
+                <td class="column-2">允许总行网管地址</td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1"> snmp-agent </td>
+                <td class="column-2">使能SNMP代理功能</td>
+            </tr>
+            <tr class="row-6 even">
+                <td class="column-1"> snmp-agent sys-info version all </td>
+                <td class="column-2"> 配置系统同时启用SNMPv1、SNMPv2c和SNMPv3版本</td>
+            </tr>
+            <tr class="row-7 odd">
+                <td class="column-1"> snmp-agent community read zxcv1234 acl newwg </td>
+                <td class="column-2">设置团体名隐藏，匹配newwg的源地址报文允许使用该团体名进行只读访问</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>SNMP配置命令如下：</p>
+<pre>
+acl name 2001                        
+ description "acl_snmp"                                     
+ rule 10 permit source 21.14.0.0 0.0.0.255              
+ rule 20 permit source 10.2.95.211 0
+ rule 1000 deny                                        
+#
+snmp-agent                                           
+snmp-agent sys-info version all                       
+snmp-agent community read <i>zxcv1234</i> acl 2001           
+</pre>
+    <h5><span id="17"><span style="color: #008000;"><strong>1.7 LOG日志配置</strong></span></span></h5>
+        <p>我行日志记录标准是syslog（RFC5424）。 syslog标准使专用的标准化子系统能够生成，过滤，记录和分析日志消息。</p>
+        <p>LOG部分配置说明：</p>
+        <p>表1-8  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LOG配置</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">info-center source default channel 2 trap level warning </td>
+                <td class="column-2">配置默认所有模块向日志主机发送trap信息，且允许输出信息的最低级别为warning</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1"> info-center loghost source LoopBack0</td>
+                <td class="column-2">向日志主机发送消息的源接口Loopback0</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1"> info-center loghost <i><日志服务器IP></i></td>
+                <td class="column-2">一级分行核心设备syslog指向<span style="color: red;">21.14.0.41</span>，其他设备指向<span style="color: red;">21.14.0.48</span>，防火墙指向<span style="color: red;">21.14.0.47</span></td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1"> info-center logbuffer size 1024</td>
+                <td class="column-2">配置log缓冲区log信息条数为1024，默认是512，取值范围是0-1024</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>LOG配置命令如下：</p>
+<pre>
+info-center source default channel 2 trap level warning   
+info-center loghost source LoopBack0                    
+info-center loghost <i><日志服务器IP></i>  
+info-center logbuffer size 1024
+</pre>
+    <h5><span id="18"><span style="color: #008000;"><strong>1.8 NTP配置</strong></span></span></h5>
+        <p>NTP服务器【Network Time Protocol（NTP）】是用来使计算机时间同步化的一种协议，它可以使计算机对其服务器或时钟源（如石英钟，GPS等等)做同步化，它可以提供高精准度的时间校正（LAN上与标准间差小于1毫秒，WAN上几十毫秒），且可介由加密确认的方式来防止恶毒的协议攻击。</p>
+        <blockquote>
+            <ul>NTP配置原则：
+                <li>一级分行核心设备指向总行NTP;</li>
+                <li>一级分行非核心设备指向分行核心;</li>
+                <li>二级分行核心设备指向一级分行核心;</li>
+                <li>二级分行其他设备指向二级分行核心。</li>
+        </ul>
+        </blockquote>
+        <p>NTP部分配置说明：</p>
+        <p>表1-9  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NTP配置</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">clock timezone UTC add 08:00:00 </td>
+                <td class="column-2">指定时区为东8区</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1"> ntp-service authentication enable</td>
+                <td class="column-2">使能NTP认证功能</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1"> ntp-service refclock-master 3</td>
+                <td class="column-2">指定本地时钟作为NTP主时钟，层次为3，为其它设备提供同步时间</td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1"> ntp-service reliable authentication-keyid 1 </td>
+                <td class="column-2">配置认证密钥ID1是可信的</td>
+            </tr>
+            <tr class="row-6 even">
+                <td class="column-1">ntp-service authentication-keyid  authentication-mode md5  <i>&lt;ntp密钥&gt;</i> </td>
+                <td class="column-2">配置MD5密文认证密钥，ID为1，密钥为{{ NTP_KEY }}</td>
+            </tr>
+            <tr class="row-7 odd">
+                <td class="column-1"> ntp-service unicast-server <i>&lt;ntp主服务器&gt;</i>source loopback 0 authentication-keyid 1 priority</td>
+                <td class="column-2">一级分行核心设备指向总行NTP（主：21.14.0.100 备：21.14.0.101）</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>NTP配置命令如下：</p>
+<pre>
+<span style="color: red;">分行核心设备NTP配置</span>
+clock timezone UTC add 08:00:00
+#
+ntp-service authentication enable
+ntp-service refclock-master 3
+ntp-service authentication-keyid 1 authentication-mode md5 {{ NTP_KEY }}
+ntp-service reliable authentication-keyid 1
+ntp-service unicast-server 21.14.0.100 source loopback 0 authentication-keyid 1 priority
+ntp-service unicast-server 21.14.0.101 source loopback 0 authentication-keyid 1
+#
+<span style="color: red;">分行非核心设备NTP配置</span>
+#
+clock timezone UTC add 08:00:00
+#
+ntp-service authentication enable
+ntp-service authentication-keyid 1 authentication-mode md5 <i>&lt;ntp密钥&gt;</i>
+ntp-service reliable authentication-keyid 1
+ntp-service unicast-server <i>&lt;ntp主服务器&gt;</i> source loopback 0 authentication-keyid 1 priority 
+ntp-service unicast-server <i>&lt;ntp备服务器&gt;</i> source loopback 0 authentication-keyid 1
+</pre>
+    <h5><span id="19"><span style="color: #008000;"><strong>1.9 生产交换机端口配置</strong></span></span></h5>
+        <p>生产交换机指连接生产服务器的接入层交换机，对于生产交换机端口要求配置BPDU限制，开启风暴控制等功能。</p>
+        <p>生产交换机端口配置部分配置说明：</p>
+        <p>表1-10  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生产交换机端口配置</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">port link-type access | trunk</td>
+                <td class="column-2">配置接口类型是access或者是trunk</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1"> port access vlan <i>&lt;vlan号&gt;</i></td>
+                <td class="column-2">配置接口缺省VLAN并接入该VLAN</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1">  port trunk permit vlan <i>&lt;vlan号&gt;</i></td>
+                <td class="column-2">声明允许的VLAN</td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1">undo  port trunk permit vlan 1</td>
+                <td class="column-2">不允许使用默认管理VLAN1</td>
+            </tr>
+            <tr class="row-6 even">
+                <td class="column-1">broadcast-suppression  1 </td>
+                <td class="column-2">广播流量最大1%,进行风暴控制
+            </tr>
+            <tr class="row-7 odd">
+                <td class="column-1">multicast-suppression  1</td>
+                <td class="column-2">组播流量最大1%,进行风暴控制</td>
+            </tr>
+            <tr class="row-8 even">
+                <td class="column-1">unicast-suppression 1</td>
+                <td class="column-2">未知单播流量最大1%,进行风暴控制
+            </tr>
+        </tbody>
+        </table>
+        <p>生产交换机端口配置命令如下：</p>
+<pre>
+// 端口模式为ACCESS
+interface GigabitEthernet0/0/X
+ description Connect to <对端设备名称-端口> 
+ port link-type access
+ port access vlan <接入vlan号>
+ stp edged-port enable
+multicast-suppression  1
+broadcast-suppression  1
+unicast-suppression 1
+#
+// 端口模式为TRUNK
+interface GigabitEthernet0/0/X
+ description Connect to <对端设备名称-端口> 
+ port link-type trunk
+ undo port trunk permit vlan 1
+ port trunk permit vlan <允许vlan号> to <允许vlan号>
+multicast-suppression  1
+broadcast-suppression  1
+unicast-suppression 1
+</pre>
+    <h5><span id="110"><span style="color: #008000;"><strong>1.10 办公交换机端口配置</strong></span></span></h5>
+        <p>按总行规定，<span style="color: red;">办公交换机连接终端的端口需要配置以下接入认证：</span></p>
+        <ul style="color: red;">
+            <li><strong><a href="/cmdb/baseline/dot1x/" style="cursor: help;">1、802.1x认证 ；<span style="font-size: 1.8em;">&#9888;</span></a></strong>
+               <ul style="list-style-type: disc;">
+                <li><strong>802.1x:</strong>终端支持802.1x协议，且可以安装天珣客户端软件</li>
+                <li><strong>mac-auth:</strong>终端支持802.1x协议，但无法安装天珣客户端软件</li>
+               </ul>
+            </li>
+            <li>2、MAC地址绑定（对于不支持802.1x的终端)</li></ul>
+        <p>办公交换机的802.1x认证服务器一般为radius认证服务器，通常在分行由天珣服务器负责802.1x的认证。对于华三交换机<strong>总行推荐使用端口安全特性进行dot1x准入控制</strong>。
+        <blockquote>
+            <p><strong>关于华三设备端口安全特性与dot1x说明：</strong></p>
+            <p>&nbsp; &nbsp; &nbsp;H3C交换机中的“端口安全”（Port Security）与Cisco设备中的“端口安全”功能并不完全一样，它是一种对网络接入进行控制的安全机制（防止非法接入），是对已有的IEEE 802.1x认证和MAC地址认证的扩充。<br>&nbsp; &nbsp; &nbsp;H3C交换机中的端口安全主要功能就是用户通过定义各种安全模式，来控制端口上的MAC地址学习或对用户进行认证，从而让设备学习到合法的源MAC地址，以达到相应的网络管理效果。<br>&nbsp; &nbsp; &nbsp;在H3C交换机上启用了端口安全功能之后，对于交换机不能通过安全模式学习到其源MAC地址的报文，系统将视为非法报文；对于不能通过IEEE 802.1x认证或MAC地址认证的事件，将被视为非法事件。<br>&nbsp; &nbsp; &nbsp;当发现非法报文或非法事件后，系统将触发相应特性，并按照预先指定的方式自动进行处理，减少了用户的维护工作量，极大地提高了系统的安全性和可管理性。</p>
+        </blockquote>
+
+        办公交换机radius配置部分配置说明：</p>
+        <p>表1-11  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;办公交换机radius配置</p>
+        <table id="tablepress-2" class="tablepress tablepress-id-2">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">视图</td>
+                <td class="column-3">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">radius scheme tianxun</td>
+                <td class="column-2">系统视图</td>
+                <td class="column-3">创建radius模版 tianxun</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1">primary authentication <i>&lt;dot1x认证主服务器&gt;</i></td>
+                <td class="column-2">RADIUS方案视图</td>
+                <td class="column-3">配置dot1x认证服务器，一般为天徇服务器</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1">primary accounting <i>&lt;dot1x 计费主服务器&gt;</i></td>
+                <td class="column-2">RADIUS方案视图</td>
+                <td class="column-3">配置dot1x计费服务器，一般为天徇服务器</td>
+            </tr>
+            <tr class="row-5 odd">
+                <td class="column-1">  key authentication simple <i>&lt;dot1x认证密钥&gt;</i></td>
+                <td class="column-2">RADIUS方案视图</td>
+                <td class="column-3">配置dot1x认证密钥</td>
+            </tr>
+            <tr class="row-6 even">
+                <td class="column-1">key accounting simple <i>&lt;dot1计费密钥&gt;</i></td>
+                <td class="column-2">RADIUS方案视图</td>
+                <td class="column-3">配置dot1x计费密钥</td>
+            </tr>
+            <tr class="row-7 odd">
+                <td class="column-1">key accounting simple <i>&lt;dot1计费密钥&gt;</i></td>
+                <td class="column-2">RADIUS方案视图</td>
+                <td class="column-3">配置dot1x计费密钥</td>
+            </tr>
+            <tr class="row-8 even">
+                <td class="column-1">nas-ip <i><设备管理地址></i></td>
+                <td class="column-2">RADIUS方案视图</td>
+                <td class="column-3">指定设备向radius服务器发送报文的源IP地址</td>
+            </tr>
+            <tr class="row-9 odd">
+                <td class="column-1">domain tianxun </td>
+                <td class="column-2">系统视图</td>
+                <td class="column-3">进入域配置视图模式</td>
+            </tr>
+            <tr class="row-10 even">
+                <td class="column-1">authentication lan-access radius-scheme tianxun</td>
+                <td class="column-2">ISP域视图</td>
+                <td class="column-3">指定网络接入认证模版使用 tianxun</td>
+            </tr>
+            <tr class="row-11 odd">
+                <td class="column-1">accounting lan-access radius-scheme tianxun</td>
+                <td class="column-2">ISP域视图</td>
+                <td class="column-3">指定网络接入计费模版使用 tianxun</td>
+            </tr>
+            <tr class="row-12 even">
+                <td class="column-1">undo access-limit enable</td>
+                <td class="column-2">ISP域视图</td>
+                <td class="column-3">取消域内用户上限限制，不限制当前ISP域可容纳的接入用户数</td>
+            </tr>
+            <tr class="row-13 odd">
+                <td class="column-1">state active</td>
+                <td class="column-2">ISP域视图</td>
+                <td class="column-3">指定当前ISP域处于活动状态，即系统允许该域下的用户请求网络服务。</td>
+            </tr>
+            <tr class="row-14 even">
+                <td class="column-1">undo idle-cut enable</td>
+                <td class="column-2">ISP域视图</td>
+                <td class="column-3">关闭当前ISP域下的用户闲置切断功能。如果域内某用户在线后连续闲置的时长超过指定的闲置检测时间，设备不会强制该用户下线。</td>
+            </tr>
+            <tr class="row-15 odd">
+                <td class="column-1">undo self-service-url enable</td>
+                <td class="column-2">ISP域视图</td>
+                <td class="column-3">用来关闭自助服务器的URL功能,自助服务即用户可以对自己的帐号和密码进行管理和控制。目前，仅CAMS/iMC类型的RADIUS服务器支持自助服务。</td>
+            </tr>
+            <tr class="row-16 even">
+                <td class="column-1"> port-security enable</td>
+                <td class="column-2">系统视图</td>
+                <td class="column-3">全局使能端口安全，注意802.1X与port-security 2种特性不能同时生效，对于启用了802.1X则无法使能port-security特性。</td>
+            </tr>
+            <tr class="row-17 odd">
+                <td class="column-1">dot1x authentication-method eap</td>
+                <td class="column-2">系统视图</td>
+                <td class="column-3">设备对认证报文的处理方式，采用EAP认证（默认为CHAP认证）</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>办公交换机端口配置部分配置说明：</p>
+        <p>表1-12  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;办公交换机端口配置</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1">配置命令</td>
+                <td class="column-2">作用</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">interface GigabitEthernet 0/0/1</td>
+                <td class="column-2">进入端口模式下配置</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1"> port link-type hybrid</td>
+                <td class="column-2">配置端口模式为hybrid，方便以后接入IP电话场景</td>
+            </tr>
+            <tr class="row-4 even">
+                <td class="column-1">port hybrid  vlan  <i>&lt;vlan号&gt;</i> untagged</td>
+                <td class="column-2">将hybrid 接口以Untagged方式加入VLAN</td>
+            </tr>
+            <tr class="row-5 even">
+                <td class="column-1"> port hybrid pvid vlan <i>&lt;vlan号&gt;</i> </td>
+                <td class="column-2">配置缺省VLAN号</td>
+            </tr>
+            <tr class="row-6 even">
+                <td class="column-1"> port-security port-mode userlogin-secure </td>
+                <td class="column-2"><strong>userlogin-secure：</strong>对接入用户采用基于MAC地址的dot1x认证，此模式下，端口最多允许一个802.1x认证用户接入(更安全，推荐使用)<br><strong>userlogin：</strong>对接入用户采用基于端口的802.1X认证
+            此模式下，端口下的第一个802.1X用户认证成功后，其它用户无须认证就可接入</td>
+            </tr>
+            <tr class="row-7 odd">
+                <td class="column-1">dot1x critical vlan<i>&lt;vlan号&gt;</i></td>
+                <td class="column-2">配置逃生vlan，当交换机与dot1x服务器异常的时候，可以通过Guest vlan访问网络</td>
+            </tr>
+            <tr class="row-8 even">
+                <td class="column-1"> stp edged-port enable</td>
+                <td class="column-2">配置边缘端口，可以加快生成树端口状态转发</td>
+            </tr>
+        </tbody>
+        </table>
+        <p>办公交换机端口配置命令如下：</p>
+<pre>
+radius scheme tianxun            
+ primary authentication <i>&lt;dot1x认证主服务器&gt;</i>
+ secondary authentication <i>&lt;dot1x认证备服务器&gt;</i>
+ primary accounting <i>&lt;dot1x计费主服务器&gt;</i>
+ secondary accounting <i>&lt;dot1x计费备服务器&gt;</i>
+ key authentication simple <i>&lt;dot1x认证密钥&gt;</i>
+ key accounting simple <i>&lt;dot1x计费密钥&gt;</i>
+ user-name-format without-domain
+ nas-ip <i><设备管理地址></i>
+#
+domain tianxun
+ authentication lan-access radius-scheme tianxun
+ accounting lan-access radius-scheme tianxun
+ undo access-limit enable
+ state active
+ undo idle-cut enable
+ undo self-service-url enable
+#
+port-security enable
+dot1x authentication-method eap
+#
+interface GE0/0/1
+description Connect to <对端设备名称-端口> 
+port link-type hybrid
+port hybrid  vlan <i>&lt;vlan号&gt;</i> untagged
+port hybrid pvid vlan <i>&lt;vlan号&gt;</i>
+port-security port-mode userlogin-secure
+dot1x critical vlan <i><逃生vlan></i>
+stp edged-port enable
+</pre>
+
+    <p>特殊设备（打印机、打卡机、复印机等）不能启用802.1X，不接受天珣管理的，配置mac地址绑定（端口安全）</p>
+<pre>
+port-security enable
+interface GE0/0/1
+description Connect to <对端设备名称-端口> 
+ port-security max-mac-count 1
+ port-security port-mode autolearn
+stp edged-port enable
+</pre>
+
+</div>
+{% include 'backtotop.html'%}
+</body>
+</html>

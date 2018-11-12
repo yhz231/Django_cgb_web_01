@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<link href="{%static "css/adstyle.css" %}" rel="stylesheet" type="text/css" />
+{% include "header.html" %}
+<style>
+    body{
+        background-color: #F2F2F2;
+        margin-left: 220px;
+        margin-top: 60px;
+        padding: 20px;
+    }
+</style>
+<body>
+{% include 'baseline/baseline-menu.html' %}
+<div class="content" align="left">
+    <h5><span style="color: #008000;"><strong>迈普设备软件类型</strong></span></h5>
+        <p>分行目前使用的设备型号及软件类型：</p>
+        <p>表1-1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 迈普设备型号及软件类型</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1" style="width: 25%">在用路由器</td>
+                <td class="column-2" style="width: 25%">在用交换机</td>
+                <td class="column-3" style="width: 25%">命令行版本说明</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">MP1800 <br>MP2800 <br>MP2900 <br>MP3840 <br>RM1800</td>
+                <td class="column-2">S3120/SM3120 <br>SM3220 <br>S3320 <br>S4220 <br>S4320 <br>S4420 <br>S5720</td>
+                <td class="column-3">型号以20结尾的交换机型号之间命令行通用，路由器则是不区分型号命令行通用。</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1"> </td>
+                <td class="column-2">SM4100</td>
+                <td class="column-3">型号以00结尾的交换机型号之间命令行通用，但与型号以20结尾有区别</td>
+            </tr>
+        </tbody>
+        </table>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<link href="{%static "css/adstyle.css" %}" rel="stylesheet" type="text/css" />
+{% include "header.html" %}
+<style>
+    body{
+        background-color: #F2F2F2;
+        margin-left: 220px;
+        margin-top: 100px;
+        text-align: left;
+        font-size: 16px;
+    }
+</style>
+<body>
+{% include 'menu.html' %}
+<div class="content" align="center">
+    <h3 style="text-align: left; margin-left: 20px;">关于网络ELS平台</h3>
+    <div>
+        <p style="font-size: 16px; text-align: left; line-height: 5; margin-left: 20px;">网络ELS平台旨在收集平常网络运维过程中可以提高运维效率的小工具，通过WEB页面的形式提供共享。</p>
+    </div>
+</div>
+</body>
+</html>

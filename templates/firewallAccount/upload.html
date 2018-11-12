@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<link href="{%static "css/adstyle.css" %}" rel="stylesheet" type="text/css" />
+{% include "header.html" %}
+<style>
+    body{
+        background-color: #F2F2F2;
+        margin-left: 250px;
+        margin-top: 100px;
+        line-height: 2;
+    }
+</style>
+<body>
+{% include 'menu.html' %}
+<div class="content" align="center">
+    <p style="text-align: left; font-size: 15px;">上传违规策略EXCEL表</p>
+    <form action="" method="POST" ENCTYPE="multipart/form-data">
+        {% csrf_token %}
+        <span style="float: left;">
+            <input type="file" name="acl" style="border: 1px solid #378888; display: inline-block;">
+            <input type="submit" value="上传" style="display: inline-block;">
+            {% ifequal upload_success 'True' %}
+                <p style="color: green;">上传文件成功</p>
+            {% endifequal %}
+            {% ifequal upload_success 'False' %}
+                <p style="color: red;">上传文件失败</p>
+                <p style="color: red;">导入表中用户名字段存在异常数据</p>
+            {% endifequal %}
+        </span>
+    </form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<link href="{%static "css/adstyle.css" %}" rel="stylesheet" type="text/css" />
+{% include "header.html" %}
+<style>
+    body{
+        background-color: #F2F2F2;
+        margin-left: 220px;
+        margin-top: 60px;
+        padding: 20px;
+    }
+</style>
+<body>
+{% include 'baseline/baseline-menu.html' %}
+<div class="content" align="left">
+    <h5><span style="color: #008000;"><strong>华三设备软件类型</strong></span></h5>
+        <p>华三软件类型说明：</p>
+        <p>表1-1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 华三设备型号及软件类型</p>
+        <table id="tablepress-1" class="tablepress tablepress-id-1">
+        <tbody class="row-hover">
+            <tr class="row-1 odd">
+                <td class="column-1" style="width: 25%;">版本型号</td>
+                <td class="column-2" style="width: 25%;">命令行版本</td>
+                <td class="column-3" style="width: 25%;">软件说明</td>
+                <td class="column-4" style="width: 25%;">在用设备型号</td>
+            </tr>
+            <tr class="row-2 even">
+                <td class="column-1">软件大版本为7，如<span style="color: red;">V7</span>.10</td>
+                <td class="column-2">ComwareV7</td>
+                <td class="column-3">华三新一代系统，采用多进程的实现方式，实现了完全的模块化。使用Linux操作系统，使得网络操作系统从一个封闭的专用系统向更加通用、开放转变。</td>
+                <td class="column-4">SR6608-X <br>MSR5660</td>
+            </tr>
+            <tr class="row-3 odd">
+                <td class="column-1">软件大版本为5，如<span style="color: red;">V5</span>.20</td>
+                <td class="column-2">ComwareV5</td>
+                <td class="column-3">华三的核心软件平台，充分吸收各类用户需求，不断引入创新技术和发明，以保持在业界的领先地位。</td>
+                <td class="column-4">S7506E <br>S5500-28SC-HI <br>S3100V2-52TP <br>S5120S-52P-EI</td>
+            </tr>
+        </tbody>
+        </table>
+
+</div>
+
+</body>
+</html>
