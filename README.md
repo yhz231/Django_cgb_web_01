@@ -1,4 +1,4 @@
-# Django_cgb_web_01
+# Django_web_01
 
 Require Package
 Package        Version 
